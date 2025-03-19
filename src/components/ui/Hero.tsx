@@ -108,7 +108,7 @@ const Hero = () => {
           </motion.div>
         </div>
         
-        {/* Brand boxes - Moved below hero content */}
+        {/* Brand logos - Moved below hero content, removed labels and boxes */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,7 +116,7 @@ const Hero = () => {
           className="py-10 mb-16"
         >
           <h3 className="text-xl font-display font-medium mb-8 text-center">Top Brands We Support</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
             {[
               { name: "HP", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
               { name: "Canon", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
@@ -127,16 +127,13 @@ const Hero = () => {
               <motion.div
                 key={brand.name}
                 whileHover={{ scale: 1.05 }}
-                className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 shadow-soft rounded-lg hover:shadow-glossy transition-shadow"
+                className="aspect-square overflow-hidden rounded-lg"
               >
-                <div className="w-full h-32 mb-4 overflow-hidden rounded-md">
-                  <img 
-                    src={brand.image} 
-                    alt={`${brand.name} brand`} 
-                    className="w-full h-full object-cover transition-transform hover:scale-105"
-                  />
-                </div>
-                <span className="text-foreground font-medium">{brand.name}</span>
+                <img 
+                  src={brand.image} 
+                  alt={`${brand.name} brand`} 
+                  className="w-full h-full object-cover transition-transform hover:scale-110 duration-300"
+                />
               </motion.div>
             ))}
           </div>

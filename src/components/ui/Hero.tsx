@@ -53,9 +53,9 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col gap-6"
+              className="flex flex-col sm:flex-row sm:items-center gap-4"
             >
-              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-8 py-6 h-auto w-fit">
+              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-6 py-2 h-10 w-fit">
                 <Link to="/products">
                   Shop Deals
                   <ChevronRight size={16} className="ml-2" />
@@ -67,21 +67,21 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative flex w-full max-w-md"
+                className="relative flex w-full max-w-sm"
               >
                 <Input
                   type="text"
-                  placeholder="Search by brand, type, or color..."
-                  className="pr-10 py-6 h-auto text-base rounded-lg border-2 focus-visible:ring-accent/50"
+                  placeholder="Search products..."
+                  className="pr-10 h-10 text-sm rounded-lg border focus-visible:ring-accent/50"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <Button 
                   type="submit" 
                   size="icon" 
-                  className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-10 bg-accent hover:bg-accent/90 text-white"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 bg-accent hover:bg-accent/90 text-white"
                 >
-                  <Search size={18} />
+                  <Search size={16} />
                 </Button>
               </motion.form>
             </motion.div>

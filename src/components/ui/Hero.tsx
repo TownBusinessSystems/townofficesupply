@@ -1,12 +1,11 @@
 
-import React, { useState } from "react";
+import React from "react";
 import HeroContent from "./hero/HeroContent";
 import HeroCarousel from "./hero/HeroCarousel";
 import BrandLogos from "./hero/BrandLogos";
+import { useHeroCarousel } from "@/hooks/useHeroCarousel";
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   // Hero carousel images
   const carouselImages = [
     "/lovable-uploads/743b3a0a-c402-48ee-acba-49844ae9ce3b.png",
@@ -39,10 +38,10 @@ const Hero = () => {
     { name: "Brother", image: "/lovable-uploads/aa266675-78cb-414c-a312-0683a3d51ec0.png" }
   ];
 
-  // Update currentIndex when the ImageCarousel changes slides
-  const handleSlideChange = (index: number) => {
-    setCurrentIndex(index);
-  };
+  // Use our custom hook to manage carousel state
+  const { currentIndex, handleSlideChange } = useHeroCarousel({
+    totalSlides: carouselImages.length
+  });
 
   return (
     <section className="relative pt-0 overflow-hidden">

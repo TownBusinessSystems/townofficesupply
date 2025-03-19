@@ -11,7 +11,7 @@ interface ImageCarouselProps {
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ 
   images, 
-  interval = 7000, // Increased interval from 5000ms to 7000ms
+  interval = 7000,
   className = "",
   onSlideChange
 }) => {
@@ -32,21 +32,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
     });
   };
   
-  useEffect(() => {
-    // Set up the interval for auto-rotation
-    const intervalId = setInterval(() => {
-      const newIndex = (currentIndex + 1) % images.length;
-      setCurrentIndex(newIndex);
-      if (onSlideChange) {
-        onSlideChange(newIndex);
-      }
-    }, interval);
-    
-    // Clean up the interval on component unmount
-    return () => clearInterval(intervalId);
-  }, [images.length, interval, currentIndex, onSlideChange]);
-  
-  // Notify parent when slide changes (including initial render)
+  // Let the parent component handle auto-rotation
   useEffect(() => {
     if (onSlideChange) {
       onSlideChange(currentIndex);
@@ -72,8 +58,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ 
-            duration: 2, // Increased from 1.5s to 2s for slower transition
-            ease: [0.25, 0.1, 0.25, 1.0] // Using cubic-bezier curve for smoother transition
+            duration: 2,
+            ease: [0.25, 0.1, 0.25, 1.0]
           }}
         >
           <img

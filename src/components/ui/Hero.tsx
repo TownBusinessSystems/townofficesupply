@@ -108,14 +108,13 @@ const Hero = () => {
           </motion.div>
         </div>
         
-        {/* Brand logos - Moved below hero content, removed labels and boxes */}
+        {/* Brand logos - Removed header and reduced top spacing */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="py-10 mb-16"
+          className="py-4 mb-16" 
         >
-          <h3 className="text-xl font-display font-medium mb-8 text-center">Top Brands We Support</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
             {[
               { name: "HP", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },

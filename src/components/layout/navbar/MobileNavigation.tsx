@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import NavLink from "./NavLink";
 import NavSearch from "./NavSearch";
 
 interface MobileNavigationProps {
@@ -16,11 +16,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen }) => {
       }`}
     >
       <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
-        <Button asChild className="bg-accent hover:bg-accent/90 text-white w-full justify-center">
-          <Link to="/products">
-            Ink & Toner
-          </Link>
-        </Button>
+        <NavLink 
+          name="Ink & Toner"
+          path="/products"
+        />
         
         <NavSearch />
       </div>

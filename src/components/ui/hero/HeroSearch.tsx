@@ -32,15 +32,15 @@ const HeroSearch: React.FC = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <Button 
-        type="submit" 
-        size="icon" 
-        className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 bg-accent hover:bg-accent/90 text-white"
-        whileTap={{ scale: 0.95 }}
-        as={motion.button}
-      >
-        <Search size={16} />
-      </Button>
+      <motion.div whileTap={{ scale: 0.95 }}>
+        <Button 
+          type="submit" 
+          size="icon" 
+          className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 bg-accent hover:bg-accent/90 text-white"
+        >
+          <Search size={16} />
+        </Button>
+      </motion.div>
     </motion.form>
   );
 };

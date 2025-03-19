@@ -75,9 +75,7 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span className="inline-block py-1 px-3 bg-accent/10 text-accent rounded-full text-sm font-medium mb-5">
-                Premium Quality Supplies
-              </span>
+              {/* Removed the Premium Quality Supplies tag that was here */}
               
               <AnimatePresence mode="wait">
                 <motion.div

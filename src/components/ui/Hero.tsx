@@ -28,13 +28,13 @@ const Hero = () => {
 
       <div className="container px-4 mx-auto">
         {/* Hero content: Text + Image */}
-        <div className="flex flex-col lg:flex-row lg:items-center py-16 lg:py-24">
+        <div className="flex flex-col lg:flex-row lg:items-center py-12 lg:py-16">
           <div className="lg:w-1/2 lg:pr-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-8"
+              className="mb-6"
             >
               <span className="inline-block py-1 px-3 bg-accent/10 text-accent rounded-full text-sm font-medium mb-5">
                 Premium Quality Supplies
@@ -91,7 +91,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:w-1/2 mt-10 lg:mt-0"
+            className="lg:w-1/2 mt-8 lg:mt-0"
           >
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-accent/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
@@ -108,12 +108,12 @@ const Hero = () => {
           </motion.div>
         </div>
         
-        {/* Brand logos - Reduced bottom margin to mb-4 */}
+        {/* Brand logos - Further reduced spacing */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="py-2 mb-4" 
+          className="py-0 -mt-6" 
         >
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
             {[

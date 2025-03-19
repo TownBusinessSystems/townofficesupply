@@ -11,6 +11,31 @@ interface PromoMessage {
 const PromoBanner = () => {
   const [showBanner, setShowBanner] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [userLocation, setUserLocation] = useState<string>("your area");
+
+  useEffect(() => {
+    // Get user's location using the Geolocation API
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          try {
+            const response = await fetch(
+              `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`
+            );
+            const data = await response.json();
+            // Use city if available, otherwise use state/province
+            const location = data.city || data.principalSubdivision || "your area";
+            setUserLocation(location);
+          } catch (error) {
+            console.error("Error fetching location data:", error);
+          }
+        },
+        (error) => {
+          console.error("Geolocation error:", error);
+        }
+      );
+    }
+  }, []);
 
   const promoMessages: PromoMessage[] = [
     {
@@ -18,7 +43,7 @@ const PromoBanner = () => {
       icon: <Percent size={16} />,
     },
     {
-      text: "Free shipping on orders over $50!",
+      text: `Free 1-3 day shipping to ${userLocation}!`,
       icon: <ShoppingBag size={16} />,
     },
     {

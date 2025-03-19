@@ -29,13 +29,14 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
         (781) 762 1900
       </span>
       <Button
-        variant="ghost"
-        size="icon"
-        className="text-foreground hover:text-accent transition-colors duration-300 relative"
+        variant="outline"
+        size="default"
+        className="text-foreground hover:bg-accent hover:text-white transition-colors duration-300 relative rounded-full border-accent"
         aria-label="Cart"
         onClick={toggleCart}
       >
-        <ShoppingCart size={20} />
+        <ShoppingCart size={20} className="mr-1" />
+        <span className="hidden sm:inline">Cart</span>
         {cartItemsCount > 0 && (
           <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-accent text-white text-xs animate-scale-in">
             {cartItemsCount}

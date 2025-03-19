@@ -60,28 +60,33 @@ const HeroContent: React.FC<HeroContentProps> = ({ currentIndex, heroContent }) 
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, scale: 1.08 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ 
-              duration: 2,
+              duration: 0.8,
               ease: [0.25, 0.1, 0.25, 1.0]
             }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 leading-tight">
               {renderHighlightedHeading(heroContent[currentIndex].heading, currentIndex)}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-lg">
+            <motion.p 
+              className="text-lg text-muted-foreground max-w-lg"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
               {heroContent[currentIndex].subtitle}
-            </p>
+            </motion.p>
           </motion.div>
         </AnimatePresence>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
         className="flex flex-col sm:flex-row sm:items-center gap-4"
       >
         <Button asChild className="bg-accent hover:bg-accent/90 text-white px-6 py-2 h-10 w-fit">

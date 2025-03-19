@@ -54,7 +54,7 @@ const Hero = () => {
 
       <div className="container px-4 mx-auto">
         {/* Hero content: Text + Image */}
-        <div className="flex flex-col lg:flex-row lg:items-center py-12 lg:py-16">
+        <div className="flex flex-col lg:flex-row lg:items-center py-8 sm:py-10 lg:py-16">
           <HeroContent 
             currentIndex={currentIndex} 
             heroContent={heroContent} 

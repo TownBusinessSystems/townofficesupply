@@ -20,9 +20,9 @@ const HeroSearch: React.FC = () => {
   return (
     <motion.form 
       onSubmit={handleSearch}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.4 }}
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
       className="relative flex w-full max-w-sm"
     >
       <Input
@@ -36,6 +36,8 @@ const HeroSearch: React.FC = () => {
         type="submit" 
         size="icon" 
         className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 bg-accent hover:bg-accent/90 text-white"
+        whileTap={{ scale: 0.95 }}
+        as={motion.button}
       >
         <Search size={16} />
       </Button>

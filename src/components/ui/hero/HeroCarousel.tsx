@@ -17,10 +17,35 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ images, onSlideChange }) =>
       className="lg:w-1/2 mt-8 lg:mt-0"
     >
       <div className="relative">
-        <div className="absolute -top-6 -left-6 w-32 h-32 bg-accent/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-        <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{ animationDelay: '2s' }}></div>
+        {/* Animated background elements */}
+        <motion.div 
+          className="absolute -top-6 -left-6 w-24 h-24 md:w-32 md:h-32 bg-accent/20 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+          animate={{ 
+            y: [0, -15, 0],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            repeatType: "reverse" 
+          }}
+        />
         
-        <div className="relative rounded-2xl overflow-hidden shadow-glossy h-[300px] sm:h-[350px] md:h-[400px]">
+        <motion.div 
+          className="absolute -bottom-8 -right-8 w-32 h-32 md:w-40 md:h-40 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+          animate={{ 
+            y: [0, 15, 0],
+            scale: [1, 1.08, 1]
+          }}
+          transition={{ 
+            duration: 7,
+            delay: 1,
+            repeat: Infinity,
+            repeatType: "reverse" 
+          }}
+        />
+        
+        <div className="relative rounded-2xl overflow-hidden shadow-glossy h-[280px] sm:h-[350px] md:h-[400px]">
           <ImageCarousel 
             images={images} 
             interval={7000}

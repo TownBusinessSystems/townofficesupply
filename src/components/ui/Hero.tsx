@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import ImageCarousel from "./ImageCarousel";
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
   // Hero carousel images
@@ -16,6 +18,22 @@ const Hero = () => {
     "/lovable-uploads/743b3a0a-c402-48ee-acba-49844ae9ce3b.png",
     "/lovable-uploads/538a4cc7-c20b-432e-a143-bcb3adf9e6e8.png",
     "/lovable-uploads/eea103c3-ad52-413d-9f73-bf4914455b9b.png"
+  ];
+
+  // Hero content pairs (heading + subtitle)
+  const heroContent = [
+    {
+      heading: "Office Supplies That Work For You",
+      subtitle: "Specializing in high-quality ink and toner cartridges for all major printer brands, delivered directly to your door."
+    },
+    {
+      heading: "Print More, Pay Less",
+      subtitle: "Premium ink & toner without the premium price. Affordable solutions at factory-direct prices."
+    },
+    {
+      heading: "Trusted by Businesses for Over 50 Years",
+      subtitle: "Print with confidence. Try risk-free with our 100% satisfaction guarantee."
+    }
   ];
 
   // Brand logo images
@@ -32,6 +50,11 @@ const Hero = () => {
     if (searchQuery.trim()) {
       navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
     }
+  };
+
+  // Update currentIndex when the ImageCarousel changes slides
+  const handleSlideChange = (index: number) => {
+    setCurrentIndex(index);
   };
 
   return (
@@ -55,14 +78,36 @@ const Hero = () => {
               <span className="inline-block py-1 px-3 bg-accent/10 text-accent rounded-full text-sm font-medium mb-5">
                 Premium Quality Supplies
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 leading-tight">
-                Office Supplies <br className="block" />
-                That <span className="text-accent">Work</span> For You
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-lg">
-                Specializing in high-quality ink and toner cartridges for all major printer brands,
-                delivered directly to your door.
-              </p>
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, scale: 1.08 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ 
+                    duration: 1.5,
+                    ease: [0.25, 0.1, 0.25, 1.0]
+                  }}
+                >
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 leading-tight">
+                    {heroContent[currentIndex].heading.split(" ").map((word, i, arr) => 
+                      i === arr.length - 1 ? (
+                        <React.Fragment key={i}>
+                          <span className="text-accent">{word}</span>
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment key={i}>
+                          {word}{" "}
+                        </React.Fragment>
+                      )
+                    )}
+                  </h1>
+                  <p className="text-lg text-muted-foreground max-w-lg">
+                    {heroContent[currentIndex].subtitle}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
             </motion.div>
 
             <motion.div
@@ -118,6 +163,7 @@ const Hero = () => {
                   images={carouselImages} 
                   interval={7000}
                   className="w-full h-full"
+                  onSlideChange={handleSlideChange}
                 />
               </div>
             </div>

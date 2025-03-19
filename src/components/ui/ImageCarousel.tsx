@@ -6,12 +6,14 @@ interface ImageCarouselProps {
   images: string[];
   interval?: number;
   className?: string;
+  onSlideChange?: (index: number) => void;
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ 
   images, 
   interval = 7000, // Increased interval from 5000ms to 7000ms
-  className = ""
+  className = "",
+  onSlideChange
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
@@ -33,12 +35,23 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   useEffect(() => {
     // Set up the interval for auto-rotation
     const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      const newIndex = (currentIndex + 1) % images.length;
+      setCurrentIndex(newIndex);
+      if (onSlideChange) {
+        onSlideChange(newIndex);
+      }
     }, interval);
     
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
-  }, [images.length, interval]);
+  }, [images.length, interval, currentIndex, onSlideChange]);
+  
+  // Notify parent when slide changes (including initial render)
+  useEffect(() => {
+    if (onSlideChange) {
+      onSlideChange(currentIndex);
+    }
+  }, [currentIndex, onSlideChange]);
   
   // Preload all images
   useEffect(() => {
@@ -80,7 +93,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
             className={`w-2 h-2 rounded-full transition-all ${
               index === currentIndex ? "bg-white scale-125" : "bg-white/50"
             }`}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => {
+              setCurrentIndex(index);
+              if (onSlideChange) {
+                onSlideChange(index);
+              }
+            }}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

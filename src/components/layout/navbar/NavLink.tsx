@@ -21,15 +21,15 @@ const NavLink: React.FC<NavLinkProps> = ({ name, path, sublinks }) => {
     <div className="relative group">
       <Link
         to={path}
-        className={`text-sm font-medium transition-colors duration-300 ${
+        className={`text-base font-medium transition-colors duration-300 px-3 py-2 rounded-md ${
           location.pathname === path
-            ? "text-accent"
-            : "hover:text-accent"
+            ? "text-accent bg-accent/10"
+            : "hover:text-accent hover:bg-accent/5"
         }`}
       >
         <div className="flex items-center gap-1">
           {name}
-          {sublinks && <ChevronDown size={14} />}
+          {sublinks && <ChevronDown size={16} />}
         </div>
       </Link>
       

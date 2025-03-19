@@ -22,10 +22,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ navLinks, isOpen })
           <div key={link.name}>
             <Link
               to={link.path}
-              className={`block py-2 text-base font-medium transition-colors duration-300 ${
+              className={`block py-3 text-base font-medium transition-colors duration-300 px-4 rounded-md ${
                 location.pathname === link.path
-                  ? "text-accent"
-                  : "hover:text-accent"
+                  ? "text-accent bg-accent/10"
+                  : "hover:text-accent hover:bg-accent/5"
               }`}
             >
               {link.name}
@@ -33,12 +33,12 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ navLinks, isOpen })
             
             {/* Mobile Sublinks */}
             {link.sublinks && (
-              <div className="pl-4 mt-1 border-l-2 border-gray-200 dark:border-gray-700 space-y-1">
+              <div className="pl-4 mt-1 border-l-2 border-gray-200 dark:border-gray-700 space-y-2">
                 {link.sublinks.map((sublink) => (
                   <Link
                     key={sublink.name}
                     to={sublink.path}
-                    className="block py-1 text-sm text-muted-foreground hover:text-accent transition-colors duration-200"
+                    className="block py-2 px-3 text-sm text-muted-foreground hover:text-accent transition-colors duration-200"
                   >
                     {sublink.name}
                   </Link>

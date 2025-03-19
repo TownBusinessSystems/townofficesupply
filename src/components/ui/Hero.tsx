@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -21,7 +20,7 @@ const Hero = () => {
 
   // Brand logo images
   const brandLogos = [
-    { name: "HP", image: "/lovable-uploads/36e6c723-cb7e-4c0f-a663-8ddd95953f4f.png" },
+    { name: "Panasonic", image: "/lovable-uploads/fffef16e-8bcd-431f-a564-7e86a8b25509.png" },
     { name: "Canon", image: "/lovable-uploads/9220cfab-8aa8-4c55-a25b-eeea9b9516fa.png" },
     { name: "Epson", image: "/lovable-uploads/e7e37c39-5925-442d-a84a-39ced51dfa48.png" },
     { name: "Dell", image: "/lovable-uploads/ab2ad9bf-dd1c-4e16-a53e-48b60afd68c6.png" },

@@ -11,7 +11,7 @@ interface PromoMessage {
 const PromoBanner = () => {
   const [showBanner, setShowBanner] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [userLocation, setUserLocation] = useState<string>("your area");
+  const [locationString, setLocationString] = useState<string | null>(null);
 
   useEffect(() => {
     // Get user's location using the Geolocation API
@@ -23,15 +23,26 @@ const PromoBanner = () => {
               `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`
             );
             const data = await response.json();
-            // Use city if available, otherwise use state/province
-            const location = data.city || data.principalSubdivision || "your area";
-            setUserLocation(location);
+            
+            // Format as "City, State" if both are available
+            const city = data.city || data.locality || "";
+            const state = data.principalSubdivision || "";
+            
+            if (city && state) {
+              setLocationString(`${city}, ${state}`);
+            } else if (city) {
+              setLocationString(city);
+            } else if (state) {
+              setLocationString(state);
+            }
           } catch (error) {
             console.error("Error fetching location data:", error);
+            setLocationString(null);
           }
         },
         (error) => {
           console.error("Geolocation error:", error);
+          setLocationString(null);
         }
       );
     }
@@ -43,7 +54,9 @@ const PromoBanner = () => {
       icon: <Percent size={16} />,
     },
     {
-      text: `Free 1-3 day shipping to ${userLocation}!`,
+      text: locationString 
+        ? `Free 1-3 day shipping to ${locationString}!`
+        : "Free 1-3 day shipping on all orders!",
       icon: <ShoppingBag size={16} />,
     },
     {

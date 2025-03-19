@@ -21,7 +21,7 @@ const NavLink: React.FC<NavLinkProps> = ({ name, path, sublinks }) => {
     <div className="relative group">
       <Link
         to={path}
-        className={`text-base font-medium transition-colors duration-300 px-3 py-2 rounded-md ${
+        className={`inline-block text-base font-medium transition-colors duration-300 px-3 py-2 rounded-md ${
           location.pathname === path
             ? "text-accent bg-accent/10"
             : "hover:text-accent hover:bg-accent/5"

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -17,6 +16,15 @@ const Hero = () => {
     "/lovable-uploads/743b3a0a-c402-48ee-acba-49844ae9ce3b.png",
     "/lovable-uploads/538a4cc7-c20b-432e-a143-bcb3adf9e6e8.png",
     "/lovable-uploads/eea103c3-ad52-413d-9f73-bf4914455b9b.png"
+  ];
+
+  // Brand logo images
+  const brandLogos = [
+    { name: "HP", image: "/lovable-uploads/36e6c723-cb7e-4c0f-a663-8ddd95953f4f.png" },
+    { name: "Canon", image: "/lovable-uploads/9220cfab-8aa8-4c55-a25b-eeea9b9516fa.png" },
+    { name: "Epson", image: "/lovable-uploads/e7e37c39-5925-442d-a84a-39ced51dfa48.png" },
+    { name: "Dell", image: "/lovable-uploads/ab2ad9bf-dd1c-4e16-a53e-48b60afd68c6.png" },
+    { name: "Brother", image: "/lovable-uploads/aa266675-78cb-414c-a312-0683a3d51ec0.png" }
   ];
 
   const handleSearch = (e: React.FormEvent) => {
@@ -108,7 +116,7 @@ const Hero = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-glossy h-[300px] sm:h-[350px] md:h-[400px]">
                 <ImageCarousel 
                   images={carouselImages} 
-                  interval={7000} // Updated from 5000 to 7000 to match
+                  interval={7000}
                   className="w-full h-full"
                 />
               </div>
@@ -116,7 +124,7 @@ const Hero = () => {
           </motion.div>
         </div>
         
-        {/* Brand logos - Further reduced spacing */}
+        {/* Brand logos */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,22 +132,16 @@ const Hero = () => {
           className="py-0 -mt-6" 
         >
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-            {[
-              { name: "HP", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
-              { name: "Canon", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
-              { name: "Epson", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
-              { name: "Brother", image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
-              { name: "Lexmark", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" }
-            ].map((brand) => (
+            {brandLogos.map((brand) => (
               <motion.div
                 key={brand.name}
                 whileHover={{ scale: 1.05 }}
-                className="relative h-28 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="relative h-28 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-4"
               >
                 <img 
                   src={brand.image} 
                   alt={`${brand.name} brand`} 
-                  className="w-full h-full object-cover transition-transform hover:scale-110 duration-300"
+                  className="max-w-full max-h-full object-contain"
                 />
               </motion.div>
             ))}

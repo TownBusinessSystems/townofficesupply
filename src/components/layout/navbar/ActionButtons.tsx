@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingCart, Search, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/CartContext";
@@ -25,15 +25,9 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
 
   return (
     <div className="flex items-center space-x-3">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="text-foreground hover:text-accent transition-colors duration-300"
-        aria-label="Search"
-        onClick={onSearchClick}
-      >
-        <Search size={20} />
-      </Button>
+      <span className="hidden md:block text-foreground font-medium">
+        (781) 762 1900
+      </span>
       <Button
         variant="ghost"
         size="icon"

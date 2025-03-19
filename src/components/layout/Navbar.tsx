@@ -6,7 +6,6 @@ import Logo from "./navbar/Logo";
 import DesktopNavigation from "./navbar/DesktopNavigation";
 import MobileNavigation from "./navbar/MobileNavigation";
 import ActionButtons from "./navbar/ActionButtons";
-import { NavLinkType } from "./navbar/types";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,20 +30,6 @@ const Navbar: React.FC = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  const navLinks: NavLinkType[] = [
-    { name: "Home", path: "/" },
-    { 
-      name: "Products", 
-      path: "/products",
-      sublinks: [
-        { name: "Ink Cartridges", path: "/products?category=ink" },
-        { name: "Toner Cartridges", path: "/products?category=toner" }
-      ]
-    },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-  ];
-
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const handleSearchClick = () => setIsSearchOpen(true);
 
@@ -64,7 +49,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <DesktopNavigation navLinks={navLinks} />
+          <DesktopNavigation />
 
           {/* Action Buttons */}
           <ActionButtons 
@@ -76,7 +61,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      <MobileNavigation navLinks={navLinks} isOpen={isMobileMenuOpen} />
+      <MobileNavigation isOpen={isMobileMenuOpen} />
 
       {/* Search Dialog */}
       <SearchDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />

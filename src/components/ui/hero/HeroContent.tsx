@@ -64,7 +64,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ currentIndex, heroContent }) 
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ 
-              duration: 0.8,
+              duration: 0.8,  // Matched with image transition duration
               ease: [0.25, 0.1, 0.25, 1.0]
             }}
           >

@@ -65,7 +65,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ 
-            duration: 2,
+            duration: 0.8,  // Adjusted to match HeroContent transition
             ease: [0.25, 0.1, 0.25, 1.0]
           }}
         >

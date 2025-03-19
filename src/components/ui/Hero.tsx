@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -56,42 +57,37 @@ const Hero = () => {
     setCurrentIndex(index);
   };
 
-  // Function to render headings with specific words in accent color
+  // Function to render headings with specific words in accent color and line breaks
   const renderHighlightedHeading = (heading: string, index: number) => {
-    const words = heading.split(" ");
-    
     if (index === 0) {
-      // "Office Supplies that Work for You" - highlight "Work"
-      return words.map((word, i) => 
-        word === "Work" ? (
-          <span key={i} className="text-accent">{word} </span>
-        ) : (
-          <span key={i}>{word} </span>
-        )
+      // "Office Supplies that Work for You" - line break after "Office Supplies"
+      return (
+        <>
+          <span>Office Supplies</span>
+          <br />
+          <span>that <span className="text-accent">Work</span> for You</span>
+        </>
       );
     } else if (index === 1) {
-      // "Print More, Pay Less" - highlight "More" and "Less"
-      return words.map((word, i) => {
-        // Handle the comma case specifically for "More,"
-        if (word === "More,") {
-          return (
-            <span key={i}>
-              <span className="text-accent">More</span>,{" "}
-            </span>
-          );
-        } else if (word === "Less") {
-          return <span key={i} className="text-accent">{word} </span>;
-        }
-        return <span key={i}>{word} </span>;
-      });
+      // "Print More, Pay Less" - line break after "More,"
+      return (
+        <>
+          <span>Print <span className="text-accent">More</span>,</span>
+          <br />
+          <span><span className="text-accent">Pay Less</span></span>
+        </>
+      );
     } else {
-      // "Trusted by Businesses for 50+ Years" - highlight "50+"
-      return words.map((word, i) => {
-        if (word === "50+") {
-          return <span key={i} className="text-accent">{word} </span>;
-        }
-        return <span key={i}>{word} </span>;
-      });
+      // "Trusted by Businesses for 50+ Years" - line breaks after "Trusted by" and "Businesses"
+      return (
+        <>
+          <span>Trusted by</span>
+          <br />
+          <span>Businesses</span>
+          <br />
+          <span>for <span className="text-accent">50+</span> Years</span>
+        </>
+      );
     }
   };
 

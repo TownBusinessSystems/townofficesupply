@@ -27,6 +27,7 @@ const Hero = () => {
       </div>
 
       <div className="container px-4 mx-auto">
+        {/* Hero content: Text + Image */}
         <div className="flex flex-col lg:flex-row lg:items-center py-16 lg:py-24">
           <div className="lg:w-1/2 lg:pr-12">
             <motion.div
@@ -84,23 +85,6 @@ const Hero = () => {
                 </Button>
               </motion.form>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-10 flex flex-wrap gap-6"
-            >
-              {["HP", "Canon", "Epson", "Brother", "Lexmark"].map((brand) => (
-                <motion.div
-                  key={brand}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center justify-center py-2 px-4 bg-white dark:bg-gray-800 shadow-soft rounded-lg"
-                >
-                  <span className="text-muted-foreground font-medium text-sm">{brand}</span>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
 
           <motion.div
@@ -123,6 +107,40 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
+        
+        {/* Brand boxes - Moved below hero content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="py-10 mb-16"
+        >
+          <h3 className="text-xl font-display font-medium mb-8 text-center">Top Brands We Support</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {[
+              { name: "HP", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
+              { name: "Canon", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
+              { name: "Epson", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
+              { name: "Brother", image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" },
+              { name: "Lexmark", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" }
+            ].map((brand) => (
+              <motion.div
+                key={brand.name}
+                whileHover={{ scale: 1.05 }}
+                className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 shadow-soft rounded-lg hover:shadow-glossy transition-shadow"
+              >
+                <div className="w-full h-32 mb-4 overflow-hidden rounded-md">
+                  <img 
+                    src={brand.image} 
+                    alt={`${brand.name} brand`} 
+                    className="w-full h-full object-cover transition-transform hover:scale-105"
+                  />
+                </div>
+                <span className="text-foreground font-medium">{brand.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

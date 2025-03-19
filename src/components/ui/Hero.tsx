@@ -127,7 +127,7 @@ const Hero = () => {
               <motion.div
                 key={brand.name}
                 whileHover={{ scale: 1.05 }}
-                className="aspect-square overflow-hidden rounded-lg"
+                className="relative h-28 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
                 <img 
                   src={brand.image} 

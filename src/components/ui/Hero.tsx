@@ -6,10 +6,18 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import ImageCarousel from "./ImageCarousel";
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+
+  // Hero carousel images
+  const carouselImages = [
+    "/lovable-uploads/743b3a0a-c402-48ee-acba-49844ae9ce3b.png",
+    "/lovable-uploads/538a4cc7-c20b-432e-a143-bcb3adf9e6e8.png",
+    "/lovable-uploads/eea103c3-ad52-413d-9f73-bf4914455b9b.png"
+  ];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,11 +105,11 @@ const Hero = () => {
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-accent/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
               <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{ animationDelay: '2s' }}></div>
               
-              <div className="relative rounded-2xl overflow-hidden shadow-glossy">
-                <img
-                  src="https://images.unsplash.com/photo-1562664377-709f2c337eb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-                  alt="Office Supplies"
-                  className="w-full h-auto rounded-lg"
+              <div className="relative rounded-2xl overflow-hidden shadow-glossy h-[300px] sm:h-[350px] md:h-[400px]">
+                <ImageCarousel 
+                  images={carouselImages} 
+                  interval={5000}
+                  className="w-full h-full"
                 />
               </div>
             </div>

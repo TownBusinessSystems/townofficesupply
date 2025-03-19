@@ -6,9 +6,10 @@ import ImageCarousel from "../ImageCarousel";
 interface HeroCarouselProps {
   images: string[];
   onSlideChange: (index: number) => void;
+  currentIndex: number;
 }
 
-const HeroCarousel: React.FC<HeroCarouselProps> = ({ images, onSlideChange }) => {
+const HeroCarousel: React.FC<HeroCarouselProps> = ({ images, onSlideChange, currentIndex }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -51,6 +52,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ images, onSlideChange }) =>
             interval={7000}
             className="w-full h-full"
             onSlideChange={onSlideChange}
+            currentIndex={currentIndex}
           />
         </div>
       </div>

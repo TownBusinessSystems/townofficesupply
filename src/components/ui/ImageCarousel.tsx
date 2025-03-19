@@ -7,16 +7,21 @@ interface ImageCarouselProps {
   interval?: number;
   className?: string;
   onSlideChange?: (index: number) => void;
+  currentIndex?: number;
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ 
   images, 
   interval = 7000,
   className = "",
-  onSlideChange
+  onSlideChange,
+  currentIndex: externalIndex
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [internalIndex, setInternalIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
+  
+  // Determine which index to use (external or internal)
+  const displayIndex = externalIndex !== undefined ? externalIndex : internalIndex;
   
   // Initialize the imagesLoaded array when the component mounts
   useEffect(() => {
@@ -32,12 +37,14 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
     });
   };
   
-  // Let the parent component handle auto-rotation
-  useEffect(() => {
+  // Notify parent of slide changes initiated by this component
+  const handleIndicatorClick = (index: number) => {
     if (onSlideChange) {
-      onSlideChange(currentIndex);
+      onSlideChange(index);
+    } else {
+      setInternalIndex(index);
     }
-  }, [currentIndex, onSlideChange]);
+  };
   
   // Preload all images
   useEffect(() => {
@@ -52,7 +59,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
     <div className={`relative w-full h-full overflow-hidden rounded-2xl ${className}`}>
       <AnimatePresence initial={false} mode="wait">
         <motion.div
-          key={currentIndex}
+          key={displayIndex}
           className="w-full h-full"
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -63,28 +70,23 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
           }}
         >
           <img
-            src={images[currentIndex]}
-            alt={`Slide ${currentIndex + 1}`}
+            src={images[displayIndex]}
+            alt={`Slide ${displayIndex + 1}`}
             className="w-full h-full object-cover"
             style={{ opacity: 1 }}
           />
         </motion.div>
       </AnimatePresence>
       
-      {/* Optional indicators */}
+      {/* Indicators */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
         {images.map((_, index) => (
           <button
             key={index}
             className={`w-2 h-2 rounded-full transition-all ${
-              index === currentIndex ? "bg-white scale-125" : "bg-white/50"
+              index === displayIndex ? "bg-white scale-125" : "bg-white/50"
             }`}
-            onClick={() => {
-              setCurrentIndex(index);
-              if (onSlideChange) {
-                onSlideChange(index);
-              }
-            }}
+            onClick={() => handleIndicatorClick(index)}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

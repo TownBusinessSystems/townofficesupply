@@ -61,6 +61,7 @@ const Hero = () => {
           <HeroCarousel 
             images={carouselImages} 
             onSlideChange={handleSlideChange} 
+            currentIndex={currentIndex}
           />
         </div>
         

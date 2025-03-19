@@ -1,11 +1,23 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
   return (
     <section className="relative pt-20 overflow-hidden">
       {/* Background element */}
@@ -40,19 +52,37 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col gap-6"
             >
-              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-8 py-6 h-auto">
+              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-8 py-6 h-auto w-fit">
                 <Link to="/products">
-                  Shop Now
+                  Shop Deals
                   <ChevronRight size={16} className="ml-2" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="px-8 py-6 h-auto">
-                <Link to="/products?category=ink">
-                  Shop Ink Cartridges
-                </Link>
-              </Button>
+              
+              <motion.form 
+                onSubmit={handleSearch}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="relative flex w-full max-w-md"
+              >
+                <Input
+                  type="text"
+                  placeholder="Search by brand, type, or color..."
+                  className="pr-10 py-6 h-auto text-base rounded-lg border-2 focus-visible:ring-accent/50"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <Button 
+                  type="submit" 
+                  size="icon" 
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-10 bg-accent hover:bg-accent/90 text-white"
+                >
+                  <Search size={18} />
+                </Button>
+              </motion.form>
             </motion.div>
 
             <motion.div

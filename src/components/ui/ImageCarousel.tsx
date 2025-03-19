@@ -14,6 +14,21 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   className = ""
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
+  
+  // Initialize the imagesLoaded array when the component mounts
+  useEffect(() => {
+    setImagesLoaded(new Array(images.length).fill(false));
+  }, [images.length]);
+
+  // Handle image load completion
+  const handleImageLoad = (index: number) => {
+    setImagesLoaded(prev => {
+      const newState = [...prev];
+      newState[index] = true;
+      return newState;
+    });
+  };
   
   useEffect(() => {
     // Set up the interval for auto-rotation
@@ -25,19 +40,33 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
     return () => clearInterval(intervalId);
   }, [images.length, interval]);
   
+  // Preload all images
+  useEffect(() => {
+    images.forEach((src, index) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => handleImageLoad(index);
+    });
+  }, [images]);
+  
   return (
     <div className={`relative w-full h-full overflow-hidden rounded-2xl ${className}`}>
       <AnimatePresence initial={false} mode="wait">
-        <motion.img
+        <motion.div
           key={currentIndex}
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex + 1}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-        />
+        >
+          <img
+            src={images[currentIndex]}
+            alt={`Slide ${currentIndex + 1}`}
+            className="w-full h-full object-cover"
+            style={{ opacity: 1 }}
+          />
+        </motion.div>
       </AnimatePresence>
       
       {/* Optional indicators */}

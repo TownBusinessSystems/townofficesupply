@@ -27,12 +27,12 @@ const HeroContent: React.FC<HeroContentProps> = ({ currentIndex, heroContent }) 
         </>
       );
     } else if (index === 1) {
-      // "Print More, Pay Less" - line break after "More,"
+      // "Print More, Pay Less" - line break after "More," - only "More" in accent color
       return (
         <>
           <span>Print <span className="text-accent">More</span>,</span>
           <br />
-          <span><span className="text-accent">Pay Less</span></span>
+          <span>Pay Less</span>
         </>
       );
     } else {

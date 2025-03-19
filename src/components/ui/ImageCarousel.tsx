@@ -72,7 +72,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ 
-            duration: 1.5, // Increased from 0.8s to 1.5s for slower transition
+            duration: 2, // Increased from 1.5s to 2s for slower transition
             ease: [0.25, 0.1, 0.25, 1.0] // Using cubic-bezier curve for smoother transition
           }}
         >

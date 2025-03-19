@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,7 +22,7 @@ const Hero = () => {
   // Hero content pairs (heading + subtitle)
   const heroContent = [
     {
-      heading: "Office Supplies That Work For You",
+      heading: "Office Supplies that Work for You",
       subtitle: "Specializing in high-quality ink and toner cartridges for all major printer brands, delivered directly to your door."
     },
     {
@@ -31,7 +30,7 @@ const Hero = () => {
       subtitle: "Premium ink & toner without the premium price. Affordable solutions at factory-direct prices."
     },
     {
-      heading: "Trusted by Businesses For Over 50 Years",
+      heading: "Trusted by Businesses for 50+ Years",
       subtitle: "Print with confidence. Try risk-free with our 100% satisfaction guarantee."
     }
   ];
@@ -62,7 +61,7 @@ const Hero = () => {
     const words = heading.split(" ");
     
     if (index === 0) {
-      // "Office Supplies That Work For You" - highlight "Work"
+      // "Office Supplies that Work for You" - highlight "Work"
       return words.map((word, i) => 
         word === "Work" ? (
           <span key={i} className="text-accent">{word} </span>
@@ -73,16 +72,22 @@ const Hero = () => {
     } else if (index === 1) {
       // "Print More, Pay Less" - highlight "More" and "Less"
       return words.map((word, i) => {
-        const cleanWord = word.replace(",", "");
-        if (cleanWord === "More" || cleanWord === "Less") {
+        // Handle the comma case specifically for "More,"
+        if (word === "More,") {
+          return (
+            <span key={i}>
+              <span className="text-accent">More</span>,{" "}
+            </span>
+          );
+        } else if (word === "Less") {
           return <span key={i} className="text-accent">{word} </span>;
         }
         return <span key={i}>{word} </span>;
       });
     } else {
-      // "Trusted by Businesses For Over 50 Years" - highlight "50 Years"
+      // "Trusted by Businesses for 50+ Years" - highlight "50+"
       return words.map((word, i) => {
-        if (word === "50" || word === "Years") {
+        if (word === "50+") {
           return <span key={i} className="text-accent">{word} </span>;
         }
         return <span key={i}>{word} </span>;

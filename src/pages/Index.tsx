@@ -14,12 +14,11 @@ import { featuredInkProducts, featuredTonerProducts } from "@/data/productData";
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <PromoBanner />
       <Navbar />
       <CartDrawer />
       
-      <PromoBanner />
-      
-      <main className="flex-grow pt-16">
+      <main className="flex-grow">
         <Hero />
         <CategoriesSection />
         <FeaturedSection title="Featured Ink Cartridges" products={featuredInkProducts} />

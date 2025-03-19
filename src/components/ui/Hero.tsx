@@ -31,7 +31,7 @@ const Hero = () => {
       subtitle: "Premium ink & toner without the premium price. Affordable solutions at factory-direct prices."
     },
     {
-      heading: "Trusted by Businesses for Over 50 Years",
+      heading: "Trusted by Businesses For Over 50 Years",
       subtitle: "Print with confidence. Try risk-free with our 100% satisfaction guarantee."
     }
   ];
@@ -55,6 +55,39 @@ const Hero = () => {
   // Update currentIndex when the ImageCarousel changes slides
   const handleSlideChange = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  // Function to render headings with specific words in accent color
+  const renderHighlightedHeading = (heading: string, index: number) => {
+    const words = heading.split(" ");
+    
+    if (index === 0) {
+      // "Office Supplies That Work For You" - highlight "Work"
+      return words.map((word, i) => 
+        word === "Work" ? (
+          <span key={i} className="text-accent">{word} </span>
+        ) : (
+          <span key={i}>{word} </span>
+        )
+      );
+    } else if (index === 1) {
+      // "Print More, Pay Less" - highlight "More" and "Less"
+      return words.map((word, i) => {
+        const cleanWord = word.replace(",", "");
+        if (cleanWord === "More" || cleanWord === "Less") {
+          return <span key={i} className="text-accent">{word} </span>;
+        }
+        return <span key={i}>{word} </span>;
+      });
+    } else {
+      // "Trusted by Businesses For Over 50 Years" - highlight "50 Years"
+      return words.map((word, i) => {
+        if (word === "50" || word === "Years") {
+          return <span key={i} className="text-accent">{word} </span>;
+        }
+        return <span key={i}>{word} </span>;
+      });
+    }
   };
 
   return (
@@ -89,17 +122,7 @@ const Hero = () => {
                   }}
                 >
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 leading-tight">
-                    {heroContent[currentIndex].heading.split(" ").map((word, i, arr) => 
-                      i === arr.length - 1 ? (
-                        <React.Fragment key={i}>
-                          <span className="text-accent">{word}</span>
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment key={i}>
-                          {word}{" "}
-                        </React.Fragment>
-                      )
-                    )}
+                    {renderHighlightedHeading(heroContent[currentIndex].heading, currentIndex)}
                   </h1>
                   <p className="text-lg text-muted-foreground max-w-lg">
                     {heroContent[currentIndex].subtitle}

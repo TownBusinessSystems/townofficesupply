@@ -71,7 +71,7 @@ const Hero = () => {
               >
                 <Input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Search by brand, type, or color..."
                   className="pr-10 h-10 text-sm rounded-lg border focus-visible:ring-accent/50"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}

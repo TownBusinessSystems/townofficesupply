@@ -6,7 +6,7 @@ const Logo: React.FC = () => {
   return (
     <Link 
       to="/" 
-      className="flex items-center gap-3 transition-opacity duration-300 hover:opacity-80"
+      className="flex items-center gap-2 transition-opacity duration-300 hover:opacity-80"
     >
       <img 
         src="/lovable-uploads/719dc146-0c76-4965-b83a-67b6eb021ba2.png" 

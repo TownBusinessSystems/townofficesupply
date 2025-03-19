@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -35,7 +36,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative pt-4 overflow-hidden">
+    <section className="relative pt-0 overflow-hidden">
       {/* Background element */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"></div>

@@ -8,6 +8,7 @@ import CategoriesSection from "@/components/sections/CategoriesSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import CTASection from "@/components/sections/CTASection";
 import CartDrawer from "@/components/ui/CartDrawer";
+import PromoBanner from "@/components/ui/PromoBanner";
 import { featuredInkProducts, featuredTonerProducts } from "@/data/productData";
 
 const Index = () => {
@@ -15,6 +16,8 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <CartDrawer />
+      
+      <PromoBanner />
       
       <main className="flex-grow pt-16">
         <Hero />

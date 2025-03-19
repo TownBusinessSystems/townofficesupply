@@ -29,9 +29,9 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
         (781) 762 1900
       </span>
       <Button
-        variant="outline"
+        variant="ghost"
         size="default"
-        className="text-foreground hover:bg-accent hover:text-white transition-colors duration-300 relative rounded-full border-accent"
+        className="text-foreground hover:bg-accent hover:text-white transition-colors duration-300 relative rounded-full"
         aria-label="Cart"
         onClick={toggleCart}
       >

@@ -1,22 +1,10 @@
 
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Search, Printer, Box, Zap } from "lucide-react";
-
-// Sample data for the search functionality
-// In a real app, this would come from your API or context
-const sampleSearchItems = [
-  { id: "p1", name: "HP 67 Black Ink Cartridge", category: "ink", url: "/product/p1" },
-  { id: "p2", name: "Canon PG-245 Black Ink Cartridge", category: "ink", url: "/product/p2" },
-  { id: "p3", name: "Epson 302 Claria Premium Ink", category: "ink", url: "/product/p3" },
-  { id: "p4", name: "Brother TN760 High Yield Toner", category: "toner", url: "/product/p4" },
-  { id: "p5", name: "HP 55A Black Toner Cartridge", category: "toner", url: "/product/p5" },
-  { id: "cat1", name: "All Ink Cartridges", category: "category", url: "/products?category=ink" },
-  { id: "cat2", name: "All Toner Cartridges", category: "category", url: "/products?category=toner" },
-  { id: "cat3", name: "All Products", category: "category", url: "/products" },
-];
+import { useSearch } from "@/hooks/useSearch";
+import { SearchItem } from "@/data/searchData";
 
 interface SearchDialogProps {
   open: boolean;
@@ -24,30 +12,14 @@ interface SearchDialogProps {
 }
 
 const SearchDialog: React.FC<SearchDialogProps> = ({ open, onOpenChange }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+  const { 
+    searchQuery, 
+    setSearchQuery, 
+    groupedItems, 
+    handleSelect 
+  } = useSearch(open, onOpenChange);
   
-  // Reset search when dialog opens
-  useEffect(() => {
-    if (open) {
-      setSearchQuery("");
-    }
-  }, [open]);
-
-  const filteredItems = sampleSearchItems.filter((item) => {
-    if (!searchQuery) return true;
-    return item.name.toLowerCase().includes(searchQuery.toLowerCase());
-  });
-
-  const handleSelect = (item: typeof sampleSearchItems[0]) => {
-    onOpenChange(false);
-    navigate(item.url);
-  };
-
-  // Group items by category
-  const inkItems = filteredItems.filter((item) => item.category === "ink");
-  const tonerItems = filteredItems.filter((item) => item.category === "toner");
-  const categoryItems = filteredItems.filter((item) => item.category === "category");
+  const { category: categoryItems, ink: inkItems, toner: tonerItems } = groupedItems;
   
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

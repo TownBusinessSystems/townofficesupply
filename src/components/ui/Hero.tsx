@@ -26,8 +26,9 @@ const Hero = () => {
               <span className="inline-block py-1 px-3 bg-accent/10 text-accent rounded-full text-sm font-medium mb-5">
                 Premium Quality Supplies
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 leading-tight text-balance">
-                Office Supplies That <span className="text-accent">Work</span> For You
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold mb-6 leading-tight">
+                Office Supplies <br className="block" />
+                That <span className="text-accent">Work</span> For You
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg">
                 Specializing in high-quality ink and toner cartridges for all major printer brands,

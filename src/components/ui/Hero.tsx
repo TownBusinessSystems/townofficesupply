@@ -5,7 +5,11 @@ import HeroCarousel from "./hero/HeroCarousel";
 import BrandLogos from "./hero/BrandLogos";
 import { useHeroCarousel } from "@/hooks/useHeroCarousel";
 
-const Hero = () => {
+interface HeroProps {
+  externalIndex?: number;
+}
+
+const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
   // Hero carousel images
   const carouselImages = [
     "/lovable-uploads/743b3a0a-c402-48ee-acba-49844ae9ce3b.png",
@@ -40,8 +44,12 @@ const Hero = () => {
 
   // Use our custom hook to manage carousel state
   const { currentIndex, handleSlideChange } = useHeroCarousel({
-    totalSlides: carouselImages.length
+    totalSlides: carouselImages.length,
+    externalControl: externalIndex !== undefined
   });
+
+  // Use external index if provided
+  const displayIndex = externalIndex !== undefined ? externalIndex : currentIndex;
 
   return (
     <section className="relative pt-0 overflow-hidden">
@@ -55,13 +63,13 @@ const Hero = () => {
         {/* Hero content: Text + Image */}
         <div className="flex flex-col lg:flex-row lg:items-center py-8 sm:py-10 lg:py-16">
           <HeroContent 
-            currentIndex={currentIndex} 
+            currentIndex={displayIndex} 
             heroContent={heroContent} 
           />
           <HeroCarousel 
             images={carouselImages} 
             onSlideChange={handleSlideChange} 
-            currentIndex={currentIndex}
+            currentIndex={displayIndex}
           />
         </div>
         

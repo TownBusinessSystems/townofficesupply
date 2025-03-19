@@ -10,16 +10,22 @@ import CTASection from "@/components/sections/CTASection";
 import CartDrawer from "@/components/ui/CartDrawer";
 import PromoBanner from "@/components/ui/PromoBanner";
 import { featuredInkProducts, featuredTonerProducts } from "@/data/productData";
+import { useHeroCarousel } from "@/hooks/useHeroCarousel";
 
 const Index = () => {
+  const { currentIndex } = useHeroCarousel({
+    totalSlides: 3,
+    interval: 7000
+  });
+
   return (
     <div className="min-h-screen flex flex-col">
-      <PromoBanner />
+      <PromoBanner externalIndex={currentIndex} />
       <Navbar />
       <CartDrawer />
       
       <main className="flex-grow">
-        <Hero />
+        <Hero externalIndex={currentIndex} />
         <CategoriesSection />
         <FeaturedSection title="Featured Ink Cartridges" products={featuredInkProducts} />
         <FeaturesSection />

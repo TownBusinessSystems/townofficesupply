@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Tag, Percent, Gift, ShoppingBag } from "lucide-react";
@@ -23,10 +22,17 @@ const stateAbbreviations: Record<string, string> = {
   "District of Columbia": "DC"
 };
 
-const PromoBanner = () => {
+interface PromoBannerProps {
+  externalIndex?: number;
+}
+
+const PromoBanner: React.FC<PromoBannerProps> = ({ externalIndex }) => {
   const [showBanner, setShowBanner] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [internalIndex, setInternalIndex] = useState(0);
   const [locationString, setLocationString] = useState<string | null>(null);
+
+  // Use external index if provided, otherwise use internal index
+  const currentIndex = externalIndex !== undefined ? externalIndex % 4 : internalIndex;
 
   useEffect(() => {
     // Get user's location using the Geolocation API
@@ -85,13 +91,16 @@ const PromoBanner = () => {
     },
   ];
 
+  // Only use auto-rotation if no external index is provided
   useEffect(() => {
+    if (externalIndex !== undefined) return;
+    
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % promoMessages.length);
+      setInternalIndex((prevIndex) => (prevIndex + 1) % promoMessages.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [promoMessages.length]);
+  }, [externalIndex, promoMessages.length]);
 
   if (!showBanner) return null;
 

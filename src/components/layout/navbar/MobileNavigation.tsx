@@ -2,7 +2,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
-import NavSearch from "./NavSearch";
 
 interface MobileNavigationProps {
   isOpen: boolean;
@@ -20,8 +19,6 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen }) => {
           name="Ink & Toner"
           path="/products"
         />
-        
-        <NavSearch />
       </div>
     </div>
   );

@@ -2,7 +2,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
-import NavSearch from "./NavSearch";
 
 const DesktopNavigation: React.FC = () => {
   return (
@@ -11,10 +10,6 @@ const DesktopNavigation: React.FC = () => {
         name="Ink & Toner"
         path="/products"
       />
-      
-      <div className="w-full max-w-md">
-        <NavSearch />
-      </div>
     </div>
   );
 };

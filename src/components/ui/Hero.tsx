@@ -108,12 +108,12 @@ const Hero = () => {
           </motion.div>
         </div>
         
-        {/* Brand logos - Removed header and reduced top spacing */}
+        {/* Brand logos - Reduced bottom margin from mb-16 to mb-8 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="py-4 mb-16" 
+          className="py-4 mb-8" 
         >
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
             {[

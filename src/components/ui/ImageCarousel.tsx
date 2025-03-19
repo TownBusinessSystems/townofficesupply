@@ -10,7 +10,7 @@ interface ImageCarouselProps {
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ 
   images, 
-  interval = 5000,
+  interval = 7000, // Increased interval from 5000ms to 7000ms
   className = ""
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,10 +55,13 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
         <motion.div
           key={currentIndex}
           className="w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ 
+            duration: 1.5, // Increased from 0.8s to 1.5s for slower transition
+            ease: [0.25, 0.1, 0.25, 1.0] // Using cubic-bezier curve for smoother transition
+          }}
         >
           <img
             src={images[currentIndex]}

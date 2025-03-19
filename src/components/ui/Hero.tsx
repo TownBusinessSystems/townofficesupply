@@ -108,7 +108,7 @@ const Hero = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-glossy h-[300px] sm:h-[350px] md:h-[400px]">
                 <ImageCarousel 
                   images={carouselImages} 
-                  interval={5000}
+                  interval={7000} // Updated from 5000 to 7000 to match
                   className="w-full h-full"
                 />
               </div>

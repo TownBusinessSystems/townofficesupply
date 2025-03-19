@@ -6,7 +6,6 @@ import { X, Tag, Percent, Gift, ShoppingBag } from "lucide-react";
 interface PromoMessage {
   text: string;
   icon: React.ReactNode;
-  color: string;
 }
 
 const PromoBanner = () => {
@@ -17,22 +16,18 @@ const PromoBanner = () => {
     {
       text: "Spring Sale 15% off site-wide! Use code SPRING15",
       icon: <Percent size={16} />,
-      color: "bg-gradient-to-r from-green-400 to-emerald-500",
     },
     {
       text: "Free shipping on orders over $50!",
       icon: <ShoppingBag size={16} />,
-      color: "bg-gradient-to-r from-blue-400 to-cyan-500",
     },
     {
       text: "New customers: Use WELCOME10 for 10% off",
       icon: <Tag size={16} />,
-      color: "bg-gradient-to-r from-purple-400 to-indigo-500",
     },
     {
       text: "Buy 2 ink cartridges, get 1 free!",
       icon: <Gift size={16} />,
-      color: "bg-gradient-to-r from-amber-400 to-orange-500",
     },
   ];
 
@@ -49,7 +44,7 @@ const PromoBanner = () => {
   const currentPromo = promoMessages[currentIndex];
 
   return (
-    <div className={`relative py-2 ${currentPromo.color} text-white shadow-md`}>
+    <div className="relative py-2 bg-gradient-to-r from-blue-400 to-cyan-500 text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center">
           <AnimatePresence mode="wait">

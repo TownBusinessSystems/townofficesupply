@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Skeleton } from "./skeleton";
 
 interface ImageCarouselProps {
   images: string[];
@@ -19,6 +20,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
 }) => {
   const [internalIndex, setInternalIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   // Determine which index to use (external or internal)
   const displayIndex = externalIndex !== undefined ? externalIndex : internalIndex;
@@ -35,6 +37,11 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
       newState[index] = true;
       return newState;
     });
+    
+    // If the first image is loaded, we can stop showing the loading state
+    if (index === 0) {
+      setIsLoading(false);
+    }
   };
   
   // Notify parent of slide changes initiated by this component
@@ -57,26 +64,31 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   
   return (
     <div className={`relative w-full h-full overflow-hidden rounded-2xl ${className}`}>
-      <AnimatePresence initial={false} mode="wait">
-        <motion.div
-          key={displayIndex}
-          className="w-full h-full"
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ 
-            duration: 0.8,  // Adjusted to match HeroContent transition
-            ease: [0.25, 0.1, 0.25, 1.0]
-          }}
-        >
-          <img
-            src={images[displayIndex]}
-            alt={`Slide ${displayIndex + 1}`}
-            className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
-          />
-        </motion.div>
-      </AnimatePresence>
+      {isLoading ? (
+        <Skeleton className="w-full h-full absolute inset-0" />
+      ) : (
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+            key={displayIndex}
+            className="w-full h-full"
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ 
+              duration: 0.8,  // Adjusted to match HeroContent transition
+              ease: [0.25, 0.1, 0.25, 1.0]
+            }}
+          >
+            <img
+              src={images[displayIndex]}
+              alt={`Slide ${displayIndex + 1}`}
+              className="w-full h-full object-cover"
+              style={{ opacity: 1 }}
+              aria-hidden="true"
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
       
       {/* Indicators */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">

@@ -11,10 +11,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/CartContext";
+import SearchDialog from "@/components/ui/SearchDialog";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { cartItems, toggleCart } = useCart();
   const location = useLocation();
   
@@ -119,6 +121,7 @@ const Navbar = () => {
               size="icon"
               className="text-foreground hover:text-accent transition-colors duration-300"
               aria-label="Search"
+              onClick={() => setIsSearchOpen(true)}
             >
               <Search size={20} />
             </Button>
@@ -187,6 +190,9 @@ const Navbar = () => {
           ))}
         </nav>
       </div>
+
+      {/* Search Dialog */}
+      <SearchDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </header>
   );
 };

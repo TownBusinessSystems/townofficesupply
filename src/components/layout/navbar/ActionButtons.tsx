@@ -25,7 +25,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
 
   return (
     <div className="flex items-center space-x-3">
-      <span className="hidden md:block text-foreground font-medium">
+      <span className="hidden md:block text-foreground">
         (781) 762 1900
       </span>
       <Button

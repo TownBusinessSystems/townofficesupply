@@ -3,7 +3,6 @@ import React from "react";
 import HeroContent from "./hero/HeroContent";
 import HeroCarousel from "./hero/HeroCarousel";
 import BrandLogos from "./hero/BrandLogos";
-import NavSearch from "@/components/layout/navbar/NavSearch";
 import { useHeroCarousel } from "@/hooks/useHeroCarousel";
 
 const Hero = () => {
@@ -63,13 +62,6 @@ const Hero = () => {
             images={carouselImages} 
             onSlideChange={handleSlideChange} 
           />
-        </div>
-        
-        {/* Search bar above brand logos */}
-        <div className="flex justify-center mb-6">
-          <div className="w-full max-w-md">
-            <NavSearch />
-          </div>
         </div>
         
         {/* Brand logos */}

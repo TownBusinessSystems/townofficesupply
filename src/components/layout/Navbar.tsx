@@ -58,8 +58,10 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Logo />
+          {/* Logo with more space */}
+          <div className="flex-shrink-0">
+            <Logo />
+          </div>
 
           {/* Desktop Navigation */}
           <DesktopNavigation navLinks={navLinks} />

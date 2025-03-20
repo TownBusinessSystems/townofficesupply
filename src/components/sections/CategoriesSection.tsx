@@ -7,25 +7,6 @@ const CategoriesSection: React.FC = () => {
   return (
     <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
       <div className="container px-4 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-3 inline-block">
-            Our Product Categories
-          </span>
-          <h2 className="text-3xl md:text-4xl font-display font-medium mb-4">
-            Find What You Need
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Explore our wide selection of high-quality ink and toner cartridges
-            for all major printer brands.
-          </p>
-        </motion.div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <CategoryCard
             title="Ink Cartridges"

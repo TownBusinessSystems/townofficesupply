@@ -3,7 +3,7 @@ import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/ui/Hero";
-import FeaturedSection from "@/components/ui/FeaturedSection";
+import FeaturedProducts from "@/components/ui/FeaturedProducts";
 import CategoriesSection from "@/components/sections/CategoriesSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import CTASection from "@/components/sections/CTASection";
@@ -18,6 +18,9 @@ const Index = () => {
     interval: 7000
   });
 
+  // Combine the featured products
+  const allFeaturedProducts = [...featuredInkProducts, ...featuredTonerProducts];
+
   return (
     <div className="min-h-screen flex flex-col">
       <PromoBanner externalIndex={currentIndex} />
@@ -27,9 +30,8 @@ const Index = () => {
       <main className="flex-grow">
         <Hero externalIndex={currentIndex} />
         <CategoriesSection />
-        <FeaturedSection title="Featured Ink Cartridges" products={featuredInkProducts} />
         <FeaturesSection />
-        <FeaturedSection title="Featured Toner Cartridges" products={featuredTonerProducts} />
+        <FeaturedProducts products={allFeaturedProducts} />
         <CTASection />
       </main>
       

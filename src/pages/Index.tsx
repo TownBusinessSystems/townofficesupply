@@ -29,9 +29,9 @@ const Index = () => {
       
       <main className="flex-grow">
         <Hero externalIndex={currentIndex} />
-        <FeaturesSection />
         <CategoriesSection />
         <FeaturedProducts products={allFeaturedProducts} />
+        <FeaturesSection />
         <CTASection />
       </main>
       

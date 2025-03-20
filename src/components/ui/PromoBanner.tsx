@@ -16,20 +16,6 @@ const PromoBanner: React.FC<PromoBannerProps> = ({ externalIndex }) => {
   const [showBanner, setShowBanner] = useState(true);
   const [internalIndex, setInternalIndex] = useState(0);
 
-  // Use external index if provided, otherwise use internal index
-  const currentIndex = externalIndex !== undefined ? externalIndex % 4 : internalIndex;
-
-  // Only use auto-rotation if no external index is provided
-  useEffect(() => {
-    if (externalIndex !== undefined) return;
-    
-    const interval = setInterval(() => {
-      setInternalIndex((prevIndex) => (prevIndex + 1) % promoMessages.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [externalIndex, promoMessages.length]);
-
   const promoMessages: PromoMessage[] = [
     {
       text: "Spring Sale 15% off site-wide! Use code SPRING15",
@@ -48,6 +34,20 @@ const PromoBanner: React.FC<PromoBannerProps> = ({ externalIndex }) => {
       icon: <Gift size={16} />,
     },
   ];
+
+  // Use external index if provided, otherwise use internal index
+  const currentIndex = externalIndex !== undefined ? externalIndex % 4 : internalIndex;
+
+  // Only use auto-rotation if no external index is provided
+  useEffect(() => {
+    if (externalIndex !== undefined) return;
+    
+    const interval = setInterval(() => {
+      setInternalIndex((prevIndex) => (prevIndex + 1) % promoMessages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [externalIndex, promoMessages.length]);
 
   if (!showBanner) return null;
 
@@ -84,3 +84,4 @@ const PromoBanner: React.FC<PromoBannerProps> = ({ externalIndex }) => {
 };
 
 export default PromoBanner;
+

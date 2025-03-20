@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Truck, Users, Sparkle, Star } from "lucide-react";
+import { ShieldCheck, Truck, Users } from "lucide-react";
 
 interface FeatureItem {
   icon: React.ElementType;
@@ -45,26 +45,10 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
       className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg`}
     >
-      <div className="absolute top-0 right-0 w-32 h-32 -mr-10 -mt-10 opacity-20">
-        <Sparkle className="w-full h-full" />
-      </div>
-      
-      <div className="relative z-10 p-8 text-white">
-        <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-5 ${feature.iconClass} backdrop-blur-md border border-white/20`}>
-          <feature.icon className="size-8" />
-        </div>
-        
-        <h3 className="text-xl font-bold mb-2 flex items-center">
-          {feature.title}
-          <Star className="w-4 h-4 ml-2 inline-block animate-pulse" />
-        </h3>
-        
-        <p className="text-white/90">
-          {feature.description}
-        </p>
-        
-        <motion.div 
-          className="absolute bottom-3 right-3 opacity-30"
+      <div className="relative z-10 p-8 text-white flex flex-col items-center text-center">
+        {/* Animated icon at the top */}
+        <motion.div
+          className={`w-16 h-16 rounded-xl flex items-center justify-center mb-5 ${feature.iconClass} backdrop-blur-md border border-white/20`}
           animate={{ 
             rotate: [0, 5, -5, 0],
             scale: [1, 1.05, 0.95, 1]
@@ -75,8 +59,18 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
             repeatType: "reverse" 
           }}
         >
-          <feature.icon className="size-12" />
+          <feature.icon className="size-8" />
         </motion.div>
+        
+        {/* Title without star */}
+        <h3 className="text-xl font-bold mb-2">
+          {feature.title}
+        </h3>
+        
+        {/* Description - already centered due to parent text-center */}
+        <p className="text-white/90">
+          {feature.description}
+        </p>
       </div>
     </motion.div>
   );

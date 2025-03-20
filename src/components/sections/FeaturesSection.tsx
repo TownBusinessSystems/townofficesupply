@@ -44,15 +44,16 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
           whileHover={{ y: -5 }}
-          className="flex flex-col items-center text-center cursor-pointer relative overflow-hidden rounded-xl border p-6 shadow-md bg-white dark:bg-gray-800 transition-all duration-300 hover:shadow-lg"
+          className="flex flex-col items-center text-center cursor-pointer relative overflow-hidden rounded-xl border p-8 shadow-md bg-accent text-white dark:bg-accent/90 transition-all duration-300 hover:shadow-xl w-full max-w-md"
         >
-          <div className={cn("w-12 h-12 rounded-full flex items-center justify-center mb-4", feature.color)}>
-            <feature.icon className="size-6" />
+          <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5 bg-white/20 backdrop-blur-sm">
+            <feature.icon className="size-8 text-white" />
           </div>
-          <Badge className="mb-2 bg-accent/10 hover:bg-accent/20 text-accent font-medium">
+          <Badge className="mb-4 bg-white/20 hover:bg-white/30 text-white font-medium text-sm py-1 px-3">
             {feature.title}
           </Badge>
-          <Check className="text-green-500 dark:text-green-400 absolute top-3 right-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100" size={16} />
+          <p className="text-white/90 text-base mb-3">{feature.description}</p>
+          <Check className="text-white absolute top-4 right-4 opacity-0 transition-opacity duration-300 hover:opacity-100" size={20} />
         </motion.div>
       </HoverCardTrigger>
       <HoverCardContent className="w-80 p-4">
@@ -67,9 +68,9 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
 
 const FeaturesSection: React.FC = () => {
   return (
-    <section className="py-12 bg-gray-50 dark:bg-gray-900/50">
+    <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+        <div className="flex flex-col md:flex-row items-stretch justify-center gap-6 md:gap-8 w-full">
           {features.map((feature, index) => (
             <FeatureCard key={feature.title} feature={feature} index={index} />
           ))}

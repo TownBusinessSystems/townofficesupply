@@ -10,22 +10,30 @@ interface BrandLogosProps {
 }
 
 const BrandLogos: React.FC<BrandLogosProps> = ({ brandLogos }) => {
-  // Container animation
+  // Container animation with slightly faster staggering for better UX
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
+        staggerChildren: 0.08, // Faster staggering
+        delayChildren: 0.2     // Shorter initial delay
       }
     }
   };
 
-  // Item animation
+  // Item animation with smooth fade-in and subtle rise
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 25,
+        stiffness: 300
+      }
+    }
   };
 
   return (
@@ -33,11 +41,11 @@ const BrandLogos: React.FC<BrandLogosProps> = ({ brandLogos }) => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="py-6 sm:py-8 mb-8" 
+      className="py-6 sm:py-8 mb-8"
     >
       <h3 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-6 text-center">Trusted by Leading Brands</h3>
       <motion.div 
-        className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6"
       >
         {brandLogos.map((brand, index) => (
           <motion.div
@@ -53,6 +61,7 @@ const BrandLogos: React.FC<BrandLogosProps> = ({ brandLogos }) => {
               src={brand.image} 
               alt={`${brand.name} brand`} 
               className="max-w-full max-h-full object-contain"
+              loading="lazy" // Add lazy loading for performance
             />
           </motion.div>
         ))}

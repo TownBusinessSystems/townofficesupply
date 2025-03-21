@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -13,7 +12,6 @@ import Footer from "@/components/layout/Footer";
 import { Product } from "@/context/CartContext";
 import CartDrawer from "@/components/ui/CartDrawer";
 
-// Mock data for products
 const allProducts: Product[] = [
   // Ink products
   {
@@ -166,15 +164,20 @@ const Products = () => {
   const [colorFilters, setColorFilters] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 250]);
   
-  // Get the category from URL query params if it exists
+  // Get the category and brand from URL query params if they exist
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const category = params.get("category");
+    const brand = params.get("brand");
     
     if (category === "ink" || category === "toner") {
       setCategoryFilter(category);
     } else {
       setCategoryFilter(null);
+    }
+    
+    if (brand && brands.includes(brand)) {
+      setBrandFilters([brand]);
     }
   }, [location.search]);
   

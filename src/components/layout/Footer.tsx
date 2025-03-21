@@ -3,8 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { 
   Facebook, 
-  Twitter, 
-  Instagram, 
+  Linkedin,
   Mail, 
   Phone, 
   MapPin,
@@ -30,6 +29,7 @@ const Footer = () => {
                 size="icon" 
                 className="h-8 w-8 rounded-full hover:text-accent hover:bg-accent/10"
                 aria-label="Facebook"
+                onClick={() => window.open("https://www.facebook.com/Bostoncopier", "_blank")}
               >
                 <Facebook size={18} />
               </Button>
@@ -37,17 +37,10 @@ const Footer = () => {
                 variant="ghost" 
                 size="icon" 
                 className="h-8 w-8 rounded-full hover:text-accent hover:bg-accent/10"
-                aria-label="Twitter"
+                aria-label="LinkedIn"
+                onClick={() => window.open("https://www.linkedin.com/company/town-business-systems/", "_blank")}
               >
-                <Twitter size={18} />
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="h-8 w-8 rounded-full hover:text-accent hover:bg-accent/10"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} />
+                <Linkedin size={18} />
               </Button>
             </div>
           </div>
@@ -84,20 +77,20 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 mt-0.5 text-accent" />
                 <span className="text-sm text-muted-foreground">
-                  123 Office Way, Suite 456<br />
-                  Business District, NY 10001
+                  170 Kerry Pl<br />
+                  Norwood, MA 02062
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-3 text-accent" />
                 <span className="text-sm text-muted-foreground">
-                  (555) 123-4567
+                  (781) 762-1900
                 </span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-3 text-accent" />
                 <span className="text-sm text-muted-foreground">
-                  info@townofficesupply.com
+                  info@townbusiness.com
                 </span>
               </li>
             </ul>

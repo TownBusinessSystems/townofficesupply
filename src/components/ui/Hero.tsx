@@ -33,13 +33,16 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
     }
   ];
 
-  // Brand logo images
+  // Brand logo images - updated with the 8 requested brands
   const brandLogos = [
-    { name: "Panasonic", image: "/lovable-uploads/fffef16e-8bcd-431f-a564-7e86a8b25509.png" },
-    { name: "Canon", image: "/lovable-uploads/9220cfab-8aa8-4c55-a25b-eeea9b9516fa.png" },
-    { name: "Epson", image: "/lovable-uploads/e7e37c39-5925-442d-a84a-39ced51dfa48.png" },
-    { name: "Dell", image: "/lovable-uploads/ab2ad9bf-dd1c-4e16-a53e-48b60afd68c6.png" },
-    { name: "Brother", image: "/lovable-uploads/aa266675-78cb-414c-a312-0683a3d51ec0.png" }
+    { name: "HP", image: "/lovable-uploads/4de92062-abd6-4268-bdc6-2b5ec3f6d108.png" },
+    { name: "Toshiba", image: "/lovable-uploads/c178c966-b78f-4eeb-987d-ffb0e99d982e.png" },
+    { name: "Dell", image: "/lovable-uploads/4dcaa6bc-2ee5-4fe0-824b-530a0f0ec533.png" },
+    { name: "Canon", image: "/lovable-uploads/9669507d-7161-4fc7-a70e-0840f24f7f1f.png" },
+    { name: "Brother", image: "/lovable-uploads/6b8b0370-856f-4190-a0a0-6851f7c66044.png" },
+    { name: "Lexmark", image: "/lovable-uploads/59cc5440-9951-4896-9af6-3af550477d0f.png" },
+    { name: "Panasonic", image: "/lovable-uploads/6d1f179e-4008-4c5a-ab9f-bb22382d2eb0.png" },
+    { name: "Samsung", image: "/lovable-uploads/0a19d3dc-ba65-4b19-ba59-8bfcff1cdb90.png" }
   ];
 
   // Use our custom hook to manage carousel state

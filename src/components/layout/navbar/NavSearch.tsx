@@ -23,7 +23,7 @@ const NavSearch: React.FC = () => {
     >
       <Input
         type="text"
-        placeholder="Search by brand, type, or color..."
+        placeholder="Search by SKU or Printer..."
         className="pr-10 h-10 text-sm rounded-lg border focus-visible:ring-accent/50"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}

@@ -25,20 +25,20 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
 
   return (
     <div className="flex items-center space-x-3">
-      <span className="hidden md:block text-foreground">
+      <span className="hidden md:block text-foreground text-lg">
         (781) 762 1900
       </span>
       <Button
         variant="ghost"
         size="default"
-        className="text-foreground hover:bg-accent hover:text-white transition-colors duration-300 relative rounded-full"
+        className="text-foreground hover:bg-accent hover:text-white transition-colors duration-300 relative rounded-full text-base md:text-lg px-4 py-3 h-auto"
         aria-label="Cart"
         onClick={toggleCart}
       >
-        <ShoppingCart size={20} className="mr-1" />
+        <ShoppingCart size={22} className="mr-1" />
         <span className="hidden sm:inline">Cart</span>
         {cartItemsCount > 0 && (
-          <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-accent text-white text-xs animate-scale-in">
+          <Badge className="absolute -top-1 -right-1 h-6 w-6 flex items-center justify-center p-0 bg-accent text-white text-xs animate-scale-in">
             {cartItemsCount}
           </Badge>
         )}
@@ -46,11 +46,11 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
       <Button
         variant="ghost"
         size="icon"
-        className="md:hidden text-foreground hover:text-accent transition-colors duration-300"
+        className="md:hidden text-foreground hover:text-accent transition-colors duration-300 h-12 w-12"
         aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         onClick={onMobileMenuClick}
       >
-        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </Button>
     </div>
   );

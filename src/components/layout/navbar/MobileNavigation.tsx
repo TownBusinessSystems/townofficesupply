@@ -16,25 +16,25 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen }) => {
       <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
         <Link 
           to="/products" 
-          className="text-base font-medium px-3 py-2 rounded-md hover:bg-accent/10 transition-colors"
+          className="text-lg font-medium px-4 py-3 rounded-md hover:bg-accent/10 transition-colors"
         >
           All Products
         </Link>
         <Link 
           to="/products?brand=HP" 
-          className="text-base font-medium px-3 py-2 rounded-md hover:bg-accent/10 transition-colors"
+          className="text-lg font-medium px-4 py-3 rounded-md hover:bg-accent/10 transition-colors"
         >
           HP
         </Link>
         <Link 
           to="/products?brand=Dell" 
-          className="text-base font-medium px-3 py-2 rounded-md hover:bg-accent/10 transition-colors"
+          className="text-lg font-medium px-4 py-3 rounded-md hover:bg-accent/10 transition-colors"
         >
           Dell
         </Link>
         <Link 
           to="/products?brand=Brother" 
-          className="text-base font-medium px-3 py-2 rounded-md hover:bg-accent/10 transition-colors"
+          className="text-lg font-medium px-4 py-3 rounded-md hover:bg-accent/10 transition-colors"
         >
           Brother
         </Link>

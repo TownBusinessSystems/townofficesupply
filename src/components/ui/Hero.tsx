@@ -55,7 +55,7 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
   const displayIndex = externalIndex !== undefined ? externalIndex : currentIndex;
 
   return (
-    <section className="relative pt-0 overflow-hidden">
+    <section className="relative pt-0 pb-4 overflow-hidden">
       {/* Background element */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"></div>
@@ -64,7 +64,7 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
 
       <div className="container px-4 mx-auto">
         {/* Hero content: Text + Image */}
-        <div className="flex flex-col lg:flex-row lg:items-center py-8 sm:py-10 lg:py-16">
+        <div className="flex flex-col lg:flex-row lg:items-center py-6 sm:py-8 lg:py-12">
           <HeroContent 
             currentIndex={displayIndex} 
             heroContent={heroContent} 

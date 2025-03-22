@@ -20,6 +20,9 @@ const Logo: React.FC = () => {
         <span className="text-lg md:text-xl font-display font-semibold leading-tight">
           Office Supply
         </span>
+        <span className="text-sm md:text-base text-gray-600 italic font-medium leading-tight">
+          Ink & Toner Depot
+        </span>
       </div>
     </Link>
   );

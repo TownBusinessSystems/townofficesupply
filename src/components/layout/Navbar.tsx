@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div className="flex items-center justify-between h-24 md:h-28"> {/* Increased height */}
           {/* Logo with more space */}
           <div className="flex-shrink-0">
             <Logo />

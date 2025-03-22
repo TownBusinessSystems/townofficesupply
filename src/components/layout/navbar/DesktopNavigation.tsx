@@ -33,14 +33,6 @@ const DesktopNavigation: React.FC = () => {
           </NavigationMenuItem>
           
           <NavigationMenuItem>
-            <Link to="/products?brand=Dell">
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} text-base md:text-lg py-2.5 px-5`}>
-                Dell
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          
-          <NavigationMenuItem>
             <Link to="/products?brand=Brother">
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} text-base md:text-lg py-2.5 px-5`}>
                 Brother

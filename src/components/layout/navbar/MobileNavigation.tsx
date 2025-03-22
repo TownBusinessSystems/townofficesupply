@@ -27,12 +27,6 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen }) => {
           HP
         </Link>
         <Link 
-          to="/products?brand=Dell" 
-          className="text-lg font-medium px-4 py-3 rounded-md hover:bg-accent/10 transition-colors"
-        >
-          Dell
-        </Link>
-        <Link 
           to="/products?brand=Brother" 
           className="text-lg font-medium px-4 py-3 rounded-md hover:bg-accent/10 transition-colors"
         >

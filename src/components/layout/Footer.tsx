@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { 
   Facebook, 
@@ -10,57 +10,12 @@ import {
   ArrowRight 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "@/hooks/use-toast";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email || !email.includes('@')) {
-      toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const { error } = await supabase
-        .from("Newsletter Subscriptions")
-        .insert([{ email }]);
-
-      if (error) throw error;
-
-      toast({
-        title: "Subscription Successful",
-        description: "Thank you for subscribing to our newsletter!",
-      });
-      
-      setEmail("");
-    } catch (error) {
-      console.error("Error subscribing to newsletter:", error);
-      toast({
-        title: "Subscription Failed",
-        description: "There was an error subscribing to the newsletter. Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <footer className="border-t border-gray-200 dark:border-gray-800 pt-12 pb-8 bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Town Office Supply</h3>
             <p className="text-sm text-muted-foreground">
@@ -138,30 +93,6 @@ const Footer = () => {
                 </span>
               </li>
             </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Newsletter</h3>
-            <p className="text-sm text-muted-foreground">
-              Subscribe to our newsletter for special deals and updates.
-            </p>
-            <form onSubmit={handleSubscribe} className="flex flex-col space-y-2">
-              <Input 
-                type="email" 
-                placeholder="Your email address" 
-                className="h-10"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <Button 
-                type="submit"
-                className="bg-accent hover:bg-accent/90 text-white transition-colors duration-300"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Subscribing..." : "Subscribe"}
-              </Button>
-            </form>
           </div>
         </div>
 

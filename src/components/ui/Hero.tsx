@@ -25,11 +25,11 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
     },
     {
       heading: "Print More, Pay Less",
-      subtitle: "Premium ink & toner without the premium price. Affordable solutions at factory-direct prices."
+      subtitle: "Premium ink & toner without the premium price. Affordable printing solutions at a fraction of the price."
     },
     {
-      heading: "Trusted by Businesses for 50+ Years",
-      subtitle: "Print with confidence. Try risk-free with our 100% satisfaction guarantee."
+      heading: "Trusted by Businesses Since 1973",
+      subtitle: "Join thousands of satisfied businesses who've trusted our refills for over five decades — all backed by our 100% satisfaction guarantee."
     }
   ];
 
@@ -55,7 +55,7 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
   const displayIndex = externalIndex !== undefined ? externalIndex : currentIndex;
 
   return (
-    <section className="relative pt-0 pb-4 overflow-hidden">
+    <section className="relative pt-6 pb-4 overflow-hidden"> {/* Added pt-6 to increase top spacing */}
       {/* Background element */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"></div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Tag, Percent, Gift, ShoppingBag } from "lucide-react";
@@ -18,15 +17,15 @@ const PromoBanner: React.FC<PromoBannerProps> = ({ externalIndex }) => {
 
   const promoMessages: PromoMessage[] = [
     {
-      text: "Spring Sale 15% off site-wide! Use code SPRING15",
+      text: "LIMITED TIME: UNLOCK 15% OFF | SPRING15 AT CHECKOUT",
       icon: <Percent size={16} />,
     },
     {
-      text: "Free 1-3 day shipping on all orders!",
+      text: "FREE SHIPPING | ARRIVES IN 1-3 DAYS",
       icon: <ShoppingBag size={16} />,
     },
     {
-      text: "New customers: Use WELCOME10 for 10% off",
+      text: "SHOP WITH CONFIDENCE: 100% SATISFACTION GUARANTEE",
       icon: <Tag size={16} />,
     },
     {
@@ -84,4 +83,3 @@ const PromoBanner: React.FC<PromoBannerProps> = ({ externalIndex }) => {
 };
 
 export default PromoBanner;
-

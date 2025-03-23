@@ -7,7 +7,9 @@ import { legacyProducts } from "./products/legacyProducts";
 import { proProducts } from "./products/proProducts";
 import { inkProducts } from "./products/inkProducts";
 import { brotherDrumUnits } from "./products/brotherDrumUnits";
-import { featuredTonerProducts, featuredInkProducts } from "./collections/featuredProducts";
+import { brotherDrumUnitsExtended } from "./products/brotherDrumUnitsExtended";
+import { brotherTonerProducts } from "./products/brotherTonerProducts";
+import { featuredTonerProducts, featuredInkProducts, featuredDrumProducts } from "./collections/featuredProducts";
 
 // Combine all products into one array
 export const products: Product[] = [
@@ -17,8 +19,10 @@ export const products: Product[] = [
   ...legacyProducts,
   ...proProducts,
   ...inkProducts,
-  ...brotherDrumUnits
+  ...brotherDrumUnits,
+  ...brotherDrumUnitsExtended,
+  ...brotherTonerProducts
 ];
 
 // Re-export the featured collections
-export { featuredTonerProducts, featuredInkProducts };
+export { featuredTonerProducts, featuredInkProducts, featuredDrumProducts };

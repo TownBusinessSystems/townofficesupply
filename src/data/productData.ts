@@ -381,4 +381,33 @@ export const products: Product[] = [
     name: "Compatible HP 87X Black Toner Cartridge (CF287X)",
     price: 99.99,
     originalPrice: 229.99,
-    image: "public/lovable-uploads/e3a9f806-0853-464b-a249-40c7764
+    image: "public/lovable-uploads/e3a9f806-0853-464b-a249-40c7764ac35c.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet Enterprise M506n", "MFP M527dn", "MFP M527f"],
+    color: "Black",
+    yield: "18000",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "High Yield",
+    shelfLife: "36-48 Months",
+    oemNumber: "CF287X",
+    description: "This compatible CF287X (HP 87X) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CF287X (87X) black laser toner cartridges. The compatible CF287X black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CF287X black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
+  },
+  {
+    id: "CF294A",
+    name: "Compatible HP 94A Black Toner Cartridge (CF294A)",
+    price: 45.99,
+    originalPrice: 69.99,
+    image: "public/lovable-uploads/6d1f179e-4008-4c5a-ab9f-bb22382d2eb0.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet Pro M118dw", "MFP M148dw", "MFP M148fdw"],
+    color: "Black",
+    yield: "1000",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "Standard Yield",
+    shelfLife: "24-36 Months",
+    oemNumber: "CF294A",
+    description: "This compatible CF294A (HP 94A) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CF294A (94A) black laser toner cartridges. The compatible CF294A black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CF294A black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
+  }
+];

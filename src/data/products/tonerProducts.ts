@@ -1,8 +1,24 @@
-
 import { Product } from "@/context/CartContext";
 
-// HP Toner Cartridges Data
+// Toner Cartridges Data
 export const tonerProducts: Product[] = [
+  {
+    id: "CF294X",
+    name: "Compatible HP 94X Black Toner Cartridge (CF294X)",
+    price: 49.99,
+    originalPrice: 99.99,
+    image: "public/lovable-uploads/ed814e27-c7ee-480f-86c8-3d5ebc975d05.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet Pro M118dw", "MFP M148dw", "MFP M148fdw"],
+    color: "Black",
+    yield: "2800",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "High Yield",
+    shelfLife: "24-36 Months",
+    oemNumber: "CF294X",
+    description: "This compatible CF294X (HP 94X) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CF294X (94X) black laser toner cartridges. The compatible CF294X black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CF294X black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
+  },
   {
     id: "CF217A",
     name: "Compatible HP 17A Black Toner Cartridge (CF217A)",

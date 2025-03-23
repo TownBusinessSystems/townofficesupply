@@ -1,7 +1,7 @@
 
 import { Product } from "@/context/CartContext";
 
-// Drum Units Data
+// Drum Units Data (HP)
 export const drumUnits: Product[] = [
   {
     id: "CF232A",

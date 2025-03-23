@@ -16,15 +16,15 @@ const features: FeatureItem[] = [
     icon: ShieldCheck,
     title: "Quality Guarantee",
     description: "All our products come with a 100% satisfaction guarantee.",
-    gradient: "from-blue-500 to-indigo-600",
-    iconClass: "bg-blue-400/30"
+    gradient: "from-blue-400 to-cyan-500", // Swapped with Fast Shipping
+    iconClass: "bg-cyan-400/30" // Swapped with Fast Shipping
   },
   {
     icon: Truck,
     title: "Fast Shipping",
-    description: "Enjoy free 1-3 day shipping on all orders. Same-day dispatch on orders before 2pm.",
-    gradient: "from-blue-400 to-cyan-500",
-    iconClass: "bg-cyan-400/30"
+    description: "Enjoy free 1-3 day shipping on all orders.", // Updated shipping text
+    gradient: "from-blue-500 to-indigo-600", // Swapped with Quality Guarantee
+    iconClass: "bg-blue-400/30" // Swapped with Quality Guarantee
   },
   {
     icon: Users,

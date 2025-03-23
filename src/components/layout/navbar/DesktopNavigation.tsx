@@ -13,23 +13,23 @@ const DesktopNavigation: React.FC = () => {
       <div className="flex items-center gap-4">
         <Link to="/reorder" className="flex flex-col items-center">
           <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-            <Package size={20} />
+            <Package size={24} />
           </Button>
-          <span className="text-xs mt-1">Reorder</span>
+          <span className="text-xs mt-0.5 font-medium">Reorder</span>
         </Link>
         
         <Link to="/track" className="flex flex-col items-center">
           <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-            <MapPin size={20} />
+            <MapPin size={24} />
           </Button>
-          <span className="text-xs mt-1">Track</span>
+          <span className="text-xs mt-0.5 font-medium">Track</span>
         </Link>
         
         <a href="tel:7817621900" className="flex flex-col items-center">
           <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-            <Phone size={20} />
+            <Phone size={24} />
           </Button>
-          <span className="text-xs mt-1">Call</span>
+          <span className="text-xs mt-0.5 font-medium">Call</span>
         </a>
       </div>
     </div>

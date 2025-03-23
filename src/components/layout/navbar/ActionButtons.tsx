@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingCart, Menu, X, PhoneCall, RotateCw, Truck } from "lucide-react";
+import { ShoppingCart, Menu, X, PhoneCall, RefreshCw, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/CartContext";
@@ -31,36 +31,36 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full h-14 w-14 flex flex-col items-center justify-center mb-0.5"
+          className="rounded-full h-16 w-16 flex flex-col items-center justify-center"
           aria-label="Reorder"
         >
-          <RotateCw size={26} className="font-bold" />
+          <RefreshCw size={32} className="font-bold" />
         </Button>
-        <span className="text-xs font-medium mt-0.5">Reorder</span>
+        <span className="text-sm font-medium -mt-2">Reorder</span>
       </div>
       
       <div className="flex flex-col items-center">
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full h-14 w-14 flex flex-col items-center justify-center mb-0.5"
+          className="rounded-full h-16 w-16 flex flex-col items-center justify-center"
           aria-label="Track"
         >
-          <Truck size={26} className="font-bold" />
+          <Truck size={32} className="font-bold" />
         </Button>
-        <span className="text-xs font-medium mt-0.5">Track</span>
+        <span className="text-sm font-medium -mt-2">Track</span>
       </div>
       
       <div className="flex flex-col items-center">
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full h-14 w-14 flex flex-col items-center justify-center mb-0.5"
+          className="rounded-full h-16 w-16 flex flex-col items-center justify-center"
           aria-label="Call"
         >
-          <PhoneCall size={26} className="font-bold" />
+          <PhoneCall size={32} className="font-bold" />
         </Button>
-        <span className="text-xs font-medium mt-0.5">Call</span>
+        <span className="text-sm font-medium -mt-2">Call</span>
       </div>
 
       {!hideCart && (

@@ -21,15 +21,15 @@ const Logo: React.FC = () => {
           Office Supply
         </span>
         <span className="text-xs md:text-sm text-gray-600 italic font-medium leading-tight">
-          Ink & Toner Depot
+          Ink & Toner Store
         </span>
       </div>
       <div className="flex flex-col items-start border-l border-gray-300 pl-2 ml-2">
-        <span className="text-accent text-lg md:text-xl font-display font-bold leading-tight">
-          Over 50 Years
+        <span className="font-display font-bold leading-tight text-lg md:text-xl">
+          Celebrating 50 Years
         </span>
         <span className="text-sm md:text-base text-gray-700 font-medium leading-tight">
-          of excellence
+          of Excellence in Service
         </span>
       </div>
     </Link>

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Package, MapPin, Phone } from "lucide-react";
+import { RotateCw, Truck, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import NavSearch from "./NavSearch";
 
@@ -21,24 +21,24 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen }) => {
         
         <div className="flex justify-around mt-4">
           <Link to="/reorder" className="flex flex-col items-center">
-            <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-              <Package size={20} />
+            <Button variant="ghost" size="icon" className="h-14 w-14 rounded-full bg-gray-100 hover:bg-accent hover:text-white mb-0.5">
+              <RotateCw size={26} className="font-bold" />
             </Button>
-            <span className="text-xs mt-1">Reorder</span>
+            <span className="text-xs font-medium mt-0.5">Reorder</span>
           </Link>
           
           <Link to="/track" className="flex flex-col items-center">
-            <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-              <MapPin size={20} />
+            <Button variant="ghost" size="icon" className="h-14 w-14 rounded-full bg-gray-100 hover:bg-accent hover:text-white mb-0.5">
+              <Truck size={26} className="font-bold" />
             </Button>
-            <span className="text-xs mt-1">Track</span>
+            <span className="text-xs font-medium mt-0.5">Track</span>
           </Link>
           
           <a href="tel:7817621900" className="flex flex-col items-center">
-            <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-              <Phone size={20} />
+            <Button variant="ghost" size="icon" className="h-14 w-14 rounded-full bg-gray-100 hover:bg-accent hover:text-white mb-0.5">
+              <PhoneCall size={26} className="font-bold" />
             </Button>
-            <span className="text-xs mt-1">Call</span>
+            <span className="text-xs font-medium mt-0.5">Call</span>
           </a>
         </div>
       </div>

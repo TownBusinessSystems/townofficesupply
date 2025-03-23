@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingCart, Printer, Package } from "lucide-react";
+import { ShoppingCart, Printer, Package, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/CartContext";
@@ -32,6 +32,7 @@ const CategoryBar: React.FC = () => {
                 >
                   <Package className="h-5 w-5" />
                   SHOP BY CARTRIDGE
+                  <ChevronDown className="h-4 w-4 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56 bg-white">
@@ -52,6 +53,7 @@ const CategoryBar: React.FC = () => {
                 >
                   <Printer className="h-5 w-5" />
                   SHOP BY PRINTER MODEL
+                  <ChevronDown className="h-4 w-4 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56 bg-white">
@@ -67,15 +69,14 @@ const CategoryBar: React.FC = () => {
 
           <Button
             variant="ghost"
-            size="default"
-            className="text-foreground hover:bg-accent hover:text-white transition-colors duration-300 relative rounded-full text-base px-4 py-3 h-auto"
+            size="icon"
+            className="bg-accent hover:bg-accent/90 text-white transition-colors duration-300 relative rounded-full h-12 w-12 flex items-center justify-center"
             aria-label="Cart"
             onClick={toggleCart}
           >
-            <ShoppingCart size={22} className="mr-2" />
-            <span className="hidden sm:inline">Cart</span>
+            <ShoppingCart size={24} />
             {cartItemsCount > 0 && (
-              <Badge className="absolute -top-1 -right-1 h-6 w-6 flex items-center justify-center p-0 bg-accent text-white text-xs animate-scale-in">
+              <Badge className="absolute -top-1 -right-1 h-6 w-6 flex items-center justify-center p-0 bg-white text-accent text-xs font-bold animate-scale-in">
                 {cartItemsCount}
               </Badge>
             )}

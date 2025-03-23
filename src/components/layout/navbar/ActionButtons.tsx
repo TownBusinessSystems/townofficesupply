@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingCart, Menu, X, PhoneCall, RotateCcw, Truck } from "lucide-react";
+import { ShoppingCart, Menu, X, PhoneCall, RotateCw, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/CartContext";
@@ -26,41 +26,41 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
   );
 
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-5">
       <div className="flex flex-col items-center">
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full h-12 w-12 flex flex-col items-center justify-center"
+          className="rounded-full h-14 w-14 flex flex-col items-center justify-center mb-0.5"
           aria-label="Reorder"
         >
-          <RotateCcw size={22} />
+          <RotateCw size={26} className="font-bold" />
         </Button>
-        <span className="text-xs mt-1">Reorder</span>
+        <span className="text-xs font-medium mt-0.5">Reorder</span>
       </div>
       
       <div className="flex flex-col items-center">
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full h-12 w-12 flex flex-col items-center justify-center"
+          className="rounded-full h-14 w-14 flex flex-col items-center justify-center mb-0.5"
           aria-label="Track"
         >
-          <Truck size={22} />
+          <Truck size={26} className="font-bold" />
         </Button>
-        <span className="text-xs mt-1">Track</span>
+        <span className="text-xs font-medium mt-0.5">Track</span>
       </div>
       
       <div className="flex flex-col items-center">
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full h-12 w-12 flex flex-col items-center justify-center"
+          className="rounded-full h-14 w-14 flex flex-col items-center justify-center mb-0.5"
           aria-label="Call"
         >
-          <PhoneCall size={22} />
+          <PhoneCall size={26} className="font-bold" />
         </Button>
-        <span className="text-xs mt-1">Call</span>
+        <span className="text-xs font-medium mt-0.5">Call</span>
       </div>
 
       {!hideCart && (

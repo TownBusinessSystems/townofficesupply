@@ -32,14 +32,14 @@ const HeroContent: React.FC<HeroContentProps> = ({ currentIndex, heroContent }) 
         </>
       );
     } else {
-      // "Trusted by Businesses Since 1973" - line breaks after "Trusted by" and highlight "1973" in blue
+      // "Trusted by Businesses for 50+ Years" - line breaks after "Trusted by" and "Businesses"
       return (
         <>
           <span>Trusted by</span>
           <br />
           <span>Businesses</span>
           <br />
-          <span>Since <span className="text-blue-500">1973</span></span>
+          <span>for <span className="text-accent">50+</span> Years</span>
         </>
       );
     }

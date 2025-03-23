@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Truck, Users } from "lucide-react";
@@ -14,21 +15,21 @@ const features: FeatureItem[] = [
   {
     icon: ShieldCheck,
     title: "Quality Guarantee",
-    description: "Print with confidence. All our cartridges come with a 100% satisfaction guarantee — contact us and we'll replace it instantly.",
+    description: "All our products come with a 100% satisfaction guarantee.",
     gradient: "from-blue-500 to-indigo-600",
     iconClass: "bg-blue-400/30"
   },
   {
     icon: Truck,
     title: "Fast Shipping",
-    description: "Never run out of ink again. Enjoy free shipping on all orders, with same-day dispatch on orders before 4pm and delivery in just 1-3 days.",
+    description: "Free shipping on orders over $50. Same-day dispatch on orders before 2pm.",
     gradient: "from-blue-400 to-cyan-500",
     iconClass: "bg-cyan-400/30"
   },
   {
     icon: Users,
     title: "Expert Support",
-    description: "Our product specialists are just a click away, ready to help you find the exact compatible refill for your specific printer model and printing needs.",
+    description: "Our team of experts is ready to help you find the right products.",
     gradient: "from-blue-500 to-purple-600",
     iconClass: "bg-purple-400/30"
   }
@@ -45,6 +46,7 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
       className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg`}
     >
       <div className="relative z-10 p-8 text-white flex flex-col items-center text-center">
+        {/* Animated icon at the top */}
         <motion.div
           className={`w-16 h-16 rounded-xl flex items-center justify-center mb-5 ${feature.iconClass} backdrop-blur-md border border-white/20`}
           animate={{ 
@@ -60,10 +62,12 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
           <feature.icon className="size-8" />
         </motion.div>
         
+        {/* Title without star */}
         <h3 className="text-xl font-bold mb-2">
           {feature.title}
         </h3>
         
+        {/* Description - already centered due to parent text-center */}
         <p className="text-white/90">
           {feature.description}
         </p>

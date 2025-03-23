@@ -5,6 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Search, Printer, Box, Zap } from "lucide-react";
 import { useSearch } from "@/hooks/useSearch";
 import { SearchItem } from "@/data/searchData";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SearchDialogProps {
   open: boolean;
@@ -20,18 +21,19 @@ const SearchDialog: React.FC<SearchDialogProps> = ({ open, onOpenChange }) => {
   } = useSearch(open, onOpenChange);
   
   const { category: categoryItems, ink: inkItems, toner: tonerItems } = groupedItems;
+  const isMobile = useIsMobile();
   
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] p-0">
         <Command className="rounded-lg border shadow-md">
           <CommandInput 
-            placeholder="Search for products..." 
+            placeholder={isMobile ? "Search..." : "Search for products..."} 
             value={searchQuery}
             onValueChange={setSearchQuery}
-            className="h-12"
+            className="h-10 md:h-12"
           />
-          <CommandList>
+          <CommandList className="max-h-[50vh] md:max-h-[300px]">
             <CommandEmpty>No results found.</CommandEmpty>
             {categoryItems.length > 0 && (
               <CommandGroup heading="Categories">

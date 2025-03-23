@@ -23,23 +23,21 @@ const HeroContent: React.FC<HeroContentProps> = ({ currentIndex, heroContent }) 
         </>
       );
     } else if (index === 1) {
-      // "Print More, Pay Less" - line break after "More," - highlight "More" and "Less" in accent color
+      // "Print More Pay Less" - removed comma - highlight "More" and "Less" in accent color
       return (
         <>
-          <span>Print <span className="text-accent">More</span>,</span>
+          <span>Print <span className="text-accent">More</span></span>
           <br />
           <span>Pay <span className="text-accent">Less</span></span>
         </>
       );
     } else {
-      // "Trusted by Businesses for 50+ Years" - line breaks after "Trusted by" and "Businesses"
+      // "Trusted by Businesses Since 1973" - all on one line with "Since 1973" on next line
       return (
         <>
-          <span>Trusted by</span>
+          <span>Trusted by Businesses</span>
           <br />
-          <span>Businesses</span>
-          <br />
-          <span>for <span className="text-accent">50+</span> Years</span>
+          <span>Since <span className="text-accent">1973</span></span>
         </>
       );
     }

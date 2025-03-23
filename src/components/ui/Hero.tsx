@@ -24,12 +24,12 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
       subtitle: "Specializing in high-quality ink and toner cartridges for all major printer brands, delivered directly to your door."
     },
     {
-      heading: "Print More, Pay Less",
-      subtitle: "Premium ink & toner without the premium price. Affordable solutions at factory-direct prices."
+      heading: "Print More Pay Less",
+      subtitle: "Premium ink & toner without the premium price. Affordable printing solutions at a fraction of the price."
     },
     {
-      heading: "Trusted by Businesses for 50+ Years",
-      subtitle: "Print with confidence. Try risk-free with our 100% satisfaction guarantee."
+      heading: "Trusted by Businesses Since 1973",
+      subtitle: "Join the thousands of satisfied businesses who've trusted our refills for over five decades. Try risk-free with our 100% satisfaction guarantee."
     }
   ];
 

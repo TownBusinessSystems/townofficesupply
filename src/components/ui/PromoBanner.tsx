@@ -26,7 +26,7 @@ const PromoBanner: React.FC<PromoBannerProps> = ({ externalIndex }) => {
       icon: <ShoppingBag size={16} />,
     },
     {
-      text: "SHOP WITH CONFIDENCE: 100% SATISFACTION GUARANTEE",
+      text: "PRINT WITH CONFIDENCE: 100% SATISFACTION GUARANTEE",
       icon: <Tag size={16} />,
     },
     {

@@ -22,14 +22,14 @@ const features: FeatureItem[] = [
   {
     icon: Truck,
     title: "Fast Shipping",
-    description: "Free shipping on orders over $50. Same-day dispatch on orders before 2pm.",
+    description: "Enjoy free 1-3 day shipping on all orders. Same-day dispatch on orders before 2pm.",
     gradient: "from-blue-400 to-cyan-500",
     iconClass: "bg-cyan-400/30"
   },
   {
     icon: Users,
     title: "Expert Support",
-    description: "Our team of experts is ready to help you find the right products.",
+    description: "Our team of experts are ready to help you find the right cartridge for your printer.",
     gradient: "from-blue-500 to-purple-600",
     iconClass: "bg-purple-400/30"
   }

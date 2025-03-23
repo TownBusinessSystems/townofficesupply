@@ -19,21 +19,21 @@ const NavSearch: React.FC = () => {
   return (
     <form 
       onSubmit={handleSearch}
-      className="relative flex w-full max-w-xl" // Keeping the width as is
+      className="relative flex w-full max-w-xl"
     >
       <Input
         type="text"
         placeholder="Search by SKU or Printer..."
-        className="pr-12 h-12 text-sm rounded-lg border focus-visible:ring-accent/50" // Restored height from h-10 to h-12
+        className="pr-12 h-12 text-sm rounded-lg border focus-visible:ring-accent/50"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <Button 
         type="submit" 
         size="icon" 
-        className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-10 bg-accent hover:bg-accent/90 text-white" // Updated button size to match larger input
+        className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-10 bg-accent hover:bg-accent/90 text-white"
       >
-        <Search size={20} /> {/* Increased icon size from 16 to 20 */}
+        <Search size={20} />
       </Button>
     </form>
   );

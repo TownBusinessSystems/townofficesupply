@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { RefreshCw, Truck, PhoneCall } from "lucide-react";
+import { RefreshCw, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import NavSearch from "./NavSearch";
 
@@ -29,14 +29,14 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen }) => {
           
           <Link to="/track" className="flex flex-col items-center">
             <Button variant="ghost" size="icon" className="h-16 w-16 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-              <Truck size={38} className="font-bold" />
+              <MapPin size={38} className="font-bold" />
             </Button>
             <span className="text-sm font-medium -mt-1">Track</span>
           </Link>
           
           <a href="tel:7817621900" className="flex flex-col items-center">
             <Button variant="ghost" size="icon" className="h-16 w-16 rounded-full bg-gray-100 hover:bg-accent hover:text-white">
-              <PhoneCall size={38} className="font-bold" />
+              <Phone size={38} className="font-bold" />
             </Button>
             <span className="text-sm font-medium -mt-1">Call</span>
           </a>

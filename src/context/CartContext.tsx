@@ -12,6 +12,13 @@ export type Product = {
   compatibility?: string[];
   color?: string;
   yield?: string;
+  // Additional properties needed for the product details
+  originalPrice?: number;
+  description?: string;
+  printerFamily?: string;
+  cartridgeYieldType?: string;
+  shelfLife?: string;
+  oemNumber?: string;
 };
 
 export type CartItem = {

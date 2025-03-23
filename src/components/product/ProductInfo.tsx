@@ -33,6 +33,13 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
     addToCart(product, quantity);
   };
 
+  // Determine if product is a toner cartridge or drum unit
+  const productType = product.name.toLowerCase().includes('drum') 
+    ? "Drum Unit" 
+    : product.category === "ink" 
+      ? "Ink Cartridge" 
+      : "Toner Cartridge";
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -43,7 +50,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
       <div>
         <div className="flex items-center mb-2 space-x-2">
           <Badge className="bg-accent text-white">
-            {product.category === "ink" ? "Ink Cartridge" : "Toner Cartridge"}
+            {productType}
           </Badge>
           <Badge variant="outline">
             {product.color || "Standard"}

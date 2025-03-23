@@ -7,6 +7,13 @@ interface ProductSpecificationsProps {
 }
 
 const ProductSpecifications: React.FC<ProductSpecificationsProps> = ({ product }) => {
+  // Determine if product is a toner cartridge or drum unit
+  const productType = product.name.toLowerCase().includes('drum') 
+    ? "Drum Unit" 
+    : product.category === "ink" 
+      ? "Ink Cartridge" 
+      : "Toner Cartridge";
+
   return (
     <section className="mt-20">
       <h2 className="text-2xl font-display font-medium mb-6">
@@ -22,7 +29,7 @@ const ProductSpecifications: React.FC<ProductSpecificationsProps> = ({ product }
             </div>
             <div>
               <h3 className="text-sm font-medium text-muted-foreground">Type</h3>
-              <p>{product.category === "ink" ? "Ink Cartridge" : "Toner Cartridge"}</p>
+              <p>{productType}</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-muted-foreground">Color</h3>

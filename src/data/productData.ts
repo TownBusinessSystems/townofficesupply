@@ -1,97 +1,147 @@
 
 import { Product } from "@/context/CartContext";
 
-// Mock data for featured products
-export const featuredInkProducts: Product[] = [
+// Product data
+export const products: Product[] = [
   {
-    id: "ink-1",
-    name: "HP 63XL Black Ink Cartridge",
-    price: 34.99,
-    image: "https://m.media-amazon.com/images/I/71umG0IYuLL._AC_SL1500_.jpg",
+    id: "CB435A",
+    name: "Compatible Black Toner Cartridge for HP 35A (CB435A)",
+    price: 35.99,
+    originalPrice: 75.89,
+    image: "public/lovable-uploads/415d87fd-9d48-4212-b778-bad184c560c3.png",
     brand: "HP",
-    category: "ink",
-    compatibility: ["HP Deskjet 1112", "HP Envy 4520", "HP OfficeJet 3830"],
+    category: "toner",
+    compatibility: ["LaserJet P1002", "LaserJet P1005", "LaserJet P1006", "LaserJet P1007", "LaserJet P1008"],
     color: "Black",
-    yield: "480"
+    yield: "1500",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "Standard Yield",
+    shelfLife: "24-36 Months",
+    oemNumber: "CB435A",
+    description: "This compatible CB435A (HP 35A) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CB435A (35A) black laser toner cartridges. The compatible CB435A black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CB435A black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
   },
   {
-    id: "ink-2",
-    name: "Canon PG-245 Black Ink Cartridge",
-    price: 19.99,
-    image: "https://m.media-amazon.com/images/I/61tmihvQHdL._AC_SL1500_.jpg",
-    brand: "Canon",
-    category: "ink",
-    compatibility: ["Canon PIXMA MG2420", "Canon PIXMA MG2520", "Canon PIXMA MG2920"],
+    id: "CB436A",
+    name: "HP 36A (CB436A) Black Compatible Toner Cartridge",
+    price: 35.99,
+    originalPrice: 78.99,
+    image: "public/lovable-uploads/86ab5f54-4d74-4bf1-a08c-fb7180f336f7.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["LaserJet M1522n MFP", "LaserJet M1522nf MFP", "LaserJet P1505", "LaserJet P1505n"],
     color: "Black",
-    yield: "180"
+    yield: "2000",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "Standard Yield",
+    shelfLife: "24-36 Months",
+    oemNumber: "CB436A",
+    description: "This compatible CB436A (HP 36A) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CB436A (36A) black laser toner cartridges. The compatible CB436A black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CB436A black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
   },
   {
-    id: "ink-3",
-    name: "Epson 702 Magenta Ink Cartridge",
-    price: 21.99,
-    image: "https://m.media-amazon.com/images/I/71zzjjqN9oL._AC_SL1500_.jpg",
-    brand: "Epson",
-    category: "ink",
-    compatibility: ["Epson WorkForce Pro WF-3720", "Epson WorkForce Pro WF-3733"],
-    color: "Magenta",
-    yield: "300"
+    id: "CE278A",
+    name: "Compatible HP 78A Black Toner Cartridge (CE278A)",
+    price: 35.99,
+    originalPrice: 89.99,
+    image: "public/lovable-uploads/4f2fae83-26dc-4b6f-a136-9587af12c270.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet Pro M1536dnf", "HP LaserJet Pro M1537dnf", "HP LaserJet Pro M1538dnf", "HP LaserJet Pro M1539dnf", "HP LaserJet Pro P1566", "HP LaserJet Pro P1606dn"],
+    color: "Black",
+    yield: "2100",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "Standard Yield",
+    shelfLife: "24-36 Months",
+    oemNumber: "CE278A",
+    description: "This compatible CE278A (HP 78A) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CE278A (78A) black laser toner cartridges. The compatible CE278A black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CE278A black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
   },
   {
-    id: "ink-4",
-    name: "Brother LC3013 Cyan Ink Cartridge",
-    price: 24.99,
-    image: "https://m.media-amazon.com/images/I/61AUWL+sIiL._AC_SL1500_.jpg",
-    brand: "Brother",
-    category: "ink",
-    compatibility: ["Brother MFC-J491DW", "Brother MFC-J497DW", "Brother MFC-J895DW"],
-    color: "Cyan",
-    yield: "400"
+    id: "CE285A",
+    name: "Compatible HP 85A Black Toner Cartridge (CE285A)",
+    price: 35.99,
+    originalPrice: 89.99,
+    image: "public/lovable-uploads/be7bd96b-598b-4e8b-8cae-ada1a7ab6f12.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet Pro M1212nf MFP", "HP LaserJet Pro M1217nfw MFP", "HP LaserJet Pro P1102", "HP LaserJet Pro P1102w", "HP LaserJet Pro P1109w"],
+    color: "Black",
+    yield: "1600",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "Standard Yield",
+    shelfLife: "24-36 Months",
+    oemNumber: "CE285A",
+    description: "This compatible CE285A (HP 85A) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CE285A (85A) black laser toner cartridges. The compatible CE285A black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CE285A black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
+  },
+  {
+    id: "CE505A",
+    name: "Compatible HP 05A Black Toner Cartridge (CE505A)",
+    price: 42.99,
+    originalPrice: 100.99,
+    image: "public/lovable-uploads/790324c2-5fe7-4415-902d-b6a5f4e6a221.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet P2035", "HP LaserJet P2035n", "HP LaserJet P2055d", "HP LaserJet P2055dn", "HP LaserJet P2055x"],
+    color: "Black",
+    yield: "2300",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "Standard Yield",
+    shelfLife: "36-48 Months",
+    oemNumber: "CE505A",
+    description: "This compatible CE505A (HP 05A) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CE505A (05A) black laser toner cartridges. The compatible CE505A black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CE505A black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
+  },
+  {
+    id: "CE505X",
+    name: "Compatible HP 05X Black Toner Cartridge (CE505X)",
+    price: 42.99,
+    originalPrice: 159.99,
+    image: "public/lovable-uploads/da1a69d1-10f5-4218-80d1-d819c831b37b.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet P2055", "HP LaserJet P2055d", "HP LaserJet P2055dn", "HP LaserJet P2055x"],
+    color: "Black",
+    yield: "6500",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "High Yield",
+    shelfLife: "36-48 Months",
+    oemNumber: "CE505X",
+    description: "This compatible CE505X (HP 05X) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CE505X (05X) black laser toner cartridges. The compatible CE505X black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CE505X black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
+  },
+  {
+    id: "CF214A",
+    name: "Compatible HP 14A Black Toner Cartridge (CF214A)",
+    price: 79.99,
+    originalPrice: 129.99,
+    image: "public/lovable-uploads/fae1f2c5-4f71-4679-bf1e-7078fb3725df.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet Enterprise 700 M712dn", "HP LaserJet Enterprise 700 M712n", "HP LaserJet Enterprise 700 M712xh", "HP LaserJet Enterprise 700 M725dn", "HP LaserJet Enterprise 700 M725f", "HP LaserJet Enterprise 700 M725z", "HP LaserJet Enterprise 700 M725z+"],
+    color: "Black",
+    yield: "10000",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "Standard Yield",
+    shelfLife: "36-48 Months",
+    oemNumber: "CF214A",
+    description: "This compatible CF214A (HP 14A) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CF214A (14A) black laser toner cartridges. The compatible CF214A black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CF214A black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
+  },
+  {
+    id: "CF214X",
+    name: "Compatible HP 14X Black Toner Cartridge (CF214X)",
+    price: 79.99,
+    originalPrice: 199.99,
+    image: "public/lovable-uploads/1956b3dc-b886-46dd-961b-645662397fc1.png",
+    brand: "HP",
+    category: "toner",
+    compatibility: ["HP LaserJet Enterprise 700 M712dn", "HP LaserJet Enterprise 700 M712n", "HP LaserJet Enterprise 700 M712xh", "HP LaserJet Enterprise 700 M725dn", "HP LaserJet Enterprise 700 M725f", "HP LaserJet Enterprise 700 M725z", "HP LaserJet Enterprise 700 M725z+"],
+    color: "Black",
+    yield: "17500",
+    printerFamily: "HP LaserJet",
+    cartridgeYieldType: "High Yield",
+    shelfLife: "36-48 Months",
+    oemNumber: "CF214X",
+    description: "This compatible CF214X (HP 14X) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CF214X (14X) black laser toner cartridges. The compatible CF214X black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CF214X black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
   }
 ];
 
-export const featuredTonerProducts: Product[] = [
-  {
-    id: "toner-1",
-    name: "HP 26A Black Toner Cartridge",
-    price: 84.99,
-    image: "https://m.media-amazon.com/images/I/71cvRNILxDL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "toner",
-    compatibility: ["HP LaserJet Pro M402dn", "HP LaserJet Pro MFP M426fdw"],
-    color: "Black",
-    yield: "3,100"
-  },
-  {
-    id: "toner-2",
-    name: "Brother TN660 High Yield Toner",
-    price: 69.99,
-    image: "https://m.media-amazon.com/images/I/71C+-YsOkfL._AC_SL1500_.jpg",
-    brand: "Brother",
-    category: "toner",
-    compatibility: ["Brother HL-L2340DW", "Brother HL-L2360DW", "Brother DCP-L2540DW"],
-    color: "Black",
-    yield: "2,600"
-  },
-  {
-    id: "toner-3",
-    name: "Canon 055 Cyan Toner Cartridge",
-    price: 76.99,
-    image: "https://m.media-amazon.com/images/I/51NUf28QpVL._AC_SL1000_.jpg",
-    brand: "Canon",
-    category: "toner",
-    compatibility: ["Canon Color imageCLASS MF743Cdw", "Canon LBP664Cdw"],
-    color: "Cyan",
-    yield: "2,100"
-  },
-  {
-    id: "toner-4",
-    name: "Lexmark 51B1000 Return Program Toner Cartridge",
-    price: 89.99,
-    image: "https://m.media-amazon.com/images/I/61CQow3NTvL._AC_SL1500_.jpg",
-    brand: "Lexmark",
-    category: "toner",
-    compatibility: ["Lexmark MS317dn", "Lexmark MS417dn", "Lexmark MS517dn"],
-    color: "Black",
-    yield: "2,500"
-  }
-];
+// For featured sections
+export const featuredInkProducts: Product[] = [];
+
+export const featuredTonerProducts: Product[] = products.slice(0, 4);

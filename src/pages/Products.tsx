@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { X, Filter, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,150 +12,15 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Product } from "@/context/CartContext";
 import CartDrawer from "@/components/ui/CartDrawer";
-
-const allProducts: Product[] = [
-  // Ink products
-  {
-    id: "ink-1",
-    name: "HP 63XL Black Ink Cartridge",
-    price: 34.99,
-    image: "https://m.media-amazon.com/images/I/71umG0IYuLL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "ink",
-    compatibility: ["HP Deskjet 1112", "HP Envy 4520", "HP OfficeJet 3830"],
-    color: "Black",
-    yield: "480"
-  },
-  {
-    id: "ink-2",
-    name: "Canon PG-245 Black Ink Cartridge",
-    price: 19.99,
-    image: "https://m.media-amazon.com/images/I/61tmihvQHdL._AC_SL1500_.jpg",
-    brand: "Canon",
-    category: "ink",
-    compatibility: ["Canon PIXMA MG2420", "Canon PIXMA MG2520", "Canon PIXMA MG2920"],
-    color: "Black",
-    yield: "180"
-  },
-  {
-    id: "ink-3",
-    name: "Epson 702 Magenta Ink Cartridge",
-    price: 21.99,
-    image: "https://m.media-amazon.com/images/I/71zzjjqN9oL._AC_SL1500_.jpg",
-    brand: "Epson",
-    category: "ink",
-    compatibility: ["Epson WorkForce Pro WF-3720", "Epson WorkForce Pro WF-3733"],
-    color: "Magenta",
-    yield: "300"
-  },
-  {
-    id: "ink-4",
-    name: "Brother LC3013 Cyan Ink Cartridge",
-    price: 24.99,
-    image: "https://m.media-amazon.com/images/I/61AUWL+sIiL._AC_SL1500_.jpg",
-    brand: "Brother",
-    category: "ink",
-    compatibility: ["Brother MFC-J491DW", "Brother MFC-J497DW", "Brother MFC-J895DW"],
-    color: "Cyan",
-    yield: "400"
-  },
-  {
-    id: "ink-5",
-    name: "HP 67XL Tri-Color Ink Cartridge",
-    price: 36.99,
-    image: "https://m.media-amazon.com/images/I/71rrRJQ7sdL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "ink",
-    compatibility: ["HP DeskJet 2732", "HP DeskJet Plus 4155", "HP ENVY 6055"],
-    color: "Tri-Color",
-    yield: "200"
-  },
-  {
-    id: "ink-6",
-    name: "Canon CLI-281 Yellow Ink Tank",
-    price: 17.99,
-    image: "https://m.media-amazon.com/images/I/71TQOkLMiML._AC_SL1500_.jpg",
-    brand: "Canon",
-    category: "ink",
-    compatibility: ["Canon PIXMA TS6120", "Canon PIXMA TS8120", "Canon PIXMA TR8520"],
-    color: "Yellow",
-    yield: "256"
-  },
-  
-  // Toner products
-  {
-    id: "toner-1",
-    name: "HP 26A Black Toner Cartridge",
-    price: 84.99,
-    image: "https://m.media-amazon.com/images/I/71cvRNILxDL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "toner",
-    compatibility: ["HP LaserJet Pro M402dn", "HP LaserJet Pro MFP M426fdw"],
-    color: "Black",
-    yield: "3,100"
-  },
-  {
-    id: "toner-2",
-    name: "Brother TN660 High Yield Toner",
-    price: 69.99,
-    image: "https://m.media-amazon.com/images/I/71C+-YsOkfL._AC_SL1500_.jpg",
-    brand: "Brother",
-    category: "toner",
-    compatibility: ["Brother HL-L2340DW", "Brother HL-L2360DW", "Brother DCP-L2540DW"],
-    color: "Black",
-    yield: "2,600"
-  },
-  {
-    id: "toner-3",
-    name: "Canon 055 Cyan Toner Cartridge",
-    price: 76.99,
-    image: "https://m.media-amazon.com/images/I/51NUf28QpVL._AC_SL1000_.jpg",
-    brand: "Canon",
-    category: "toner",
-    compatibility: ["Canon Color imageCLASS MF743Cdw", "Canon LBP664Cdw"],
-    color: "Cyan",
-    yield: "2,100"
-  },
-  {
-    id: "toner-4",
-    name: "Lexmark 51B1000 Return Program Toner Cartridge",
-    price: 89.99,
-    image: "https://m.media-amazon.com/images/I/61CQow3NTvL._AC_SL1500_.jpg",
-    brand: "Lexmark",
-    category: "toner",
-    compatibility: ["Lexmark MS317dn", "Lexmark MS417dn", "Lexmark MS517dn"],
-    color: "Black",
-    yield: "2,500"
-  },
-  {
-    id: "toner-5",
-    name: "HP 508X High Yield Yellow Toner",
-    price: 209.99,
-    image: "https://m.media-amazon.com/images/I/71y8aTJuOgL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "toner",
-    compatibility: ["HP Color LaserJet Enterprise M552dn", "HP Color LaserJet Enterprise M553dn"],
-    color: "Yellow",
-    yield: "9,500"
-  },
-  {
-    id: "toner-6",
-    name: "Brother TN760 High Yield Toner Cartridge",
-    price: 79.99,
-    image: "https://m.media-amazon.com/images/I/71BkjJOipuL._AC_SL1500_.jpg",
-    brand: "Brother",
-    category: "toner",
-    compatibility: ["Brother DCP-L2550DW", "Brother HL-L2350DW", "Brother MFC-L2710DW"],
-    color: "Black",
-    yield: "3,000"
-  }
-];
+import { products } from "@/data/productData";
 
 const brands = ["HP", "Canon", "Epson", "Brother", "Lexmark"];
 const colors = ["Black", "Cyan", "Magenta", "Yellow", "Tri-Color"];
+const yieldTypes = ["Standard Yield", "High Yield"];
 
 const Products = () => {
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   
@@ -162,13 +28,16 @@ const Products = () => {
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [brandFilters, setBrandFilters] = useState<string[]>([]);
   const [colorFilters, setColorFilters] = useState<string[]>([]);
+  const [yieldTypeFilters, setYieldTypeFilters] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 250]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   
-  // Get the category and brand from URL query params if they exist
+  // Get the category, brand, and search query from URL query params if they exist
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const category = params.get("category");
     const brand = params.get("brand");
+    const search = params.get("search");
     
     if (category === "ink" || category === "toner") {
       setCategoryFilter(category);
@@ -179,11 +48,27 @@ const Products = () => {
     if (brand && brands.includes(brand)) {
       setBrandFilters([brand]);
     }
+    
+    if (search) {
+      setSearchQuery(search);
+    } else {
+      setSearchQuery("");
+    }
   }, [location.search]);
   
   // Apply filters to products
   useEffect(() => {
-    let result = [...allProducts];
+    let result = [...products];
+    
+    // Filter by search query (model number or printer)
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(product => 
+        product.name.toLowerCase().includes(query) || 
+        product.oemNumber?.toLowerCase().includes(query) ||
+        product.compatibility?.some(printer => printer.toLowerCase().includes(query))
+      );
+    }
     
     // Filter by category
     if (categoryFilter) {
@@ -202,13 +87,20 @@ const Products = () => {
       );
     }
     
+    // Filter by yield type
+    if (yieldTypeFilters.length > 0) {
+      result = result.filter(product => 
+        product.cartridgeYieldType && yieldTypeFilters.includes(product.cartridgeYieldType)
+      );
+    }
+    
     // Filter by price range
     result = result.filter(
       product => product.price >= priceRange[0] && product.price <= priceRange[1]
     );
     
     setFilteredProducts(result);
-  }, [categoryFilter, brandFilters, colorFilters, priceRange]);
+  }, [categoryFilter, brandFilters, colorFilters, yieldTypeFilters, priceRange, searchQuery]);
   
   // Toggle brand filter
   const toggleBrandFilter = (brand: string) => {
@@ -228,11 +120,37 @@ const Products = () => {
     );
   };
   
+  // Toggle yield type filter
+  const toggleYieldTypeFilter = (yieldType: string) => {
+    setYieldTypeFilters(prev => 
+      prev.includes(yieldType)
+        ? prev.filter(y => y !== yieldType)
+        : [...prev, yieldType]
+    );
+  };
+  
   // Clear all filters
   const clearFilters = () => {
     setBrandFilters([]);
     setColorFilters([]);
+    setYieldTypeFilters([]);
     setPriceRange([0, 250]);
+    
+    // Don't clear category or search from URL
+    const params = new URLSearchParams(location.search);
+    const newParams = new URLSearchParams();
+    
+    if (params.has("category")) {
+      newParams.set("category", params.get("category")!);
+    }
+    
+    if (params.has("search")) {
+      newParams.set("search", params.get("search")!);
+    }
+    
+    window.history.replaceState({}, "", 
+      location.pathname + (newParams.toString() ? `?${newParams.toString()}` : "")
+    );
   };
   
   return (
@@ -246,11 +164,13 @@ const Products = () => {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
               <div>
                 <h1 className="text-3xl md:text-4xl font-display font-medium">
-                  {categoryFilter === "ink" 
-                    ? "Ink Cartridges" 
-                    : categoryFilter === "toner" 
-                    ? "Toner Cartridges" 
-                    : "All Products"}
+                  {searchQuery 
+                    ? `Search Results for "${searchQuery}"` 
+                    : categoryFilter === "ink" 
+                      ? "Ink Cartridges" 
+                      : categoryFilter === "toner" 
+                        ? "Toner Cartridges" 
+                        : "All Products"}
                 </h1>
                 <p className="text-muted-foreground mt-2">
                   {filteredProducts.length} products available
@@ -268,7 +188,7 @@ const Products = () => {
             </div>
             
             {/* Active filters */}
-            {(brandFilters.length > 0 || colorFilters.length > 0 || priceRange[0] > 0 || priceRange[1] < 250) && (
+            {(brandFilters.length > 0 || colorFilters.length > 0 || yieldTypeFilters.length > 0 || priceRange[0] > 0 || priceRange[1] < 250) && (
               <div className="flex flex-wrap gap-2 mb-6">
                 {brandFilters.map(brand => (
                   <Badge 
@@ -296,6 +216,21 @@ const Products = () => {
                       size={14} 
                       className="ml-1 cursor-pointer"
                       onClick={() => toggleColorFilter(color)}
+                    />
+                  </Badge>
+                ))}
+                
+                {yieldTypeFilters.map(yieldType => (
+                  <Badge 
+                    key={yieldType} 
+                    variant="secondary"
+                    className="px-3 py-1 flex items-center gap-1"
+                  >
+                    {yieldType}
+                    <X 
+                      size={14} 
+                      className="ml-1 cursor-pointer"
+                      onClick={() => toggleYieldTypeFilter(yieldType)}
                     />
                   </Badge>
                 ))}
@@ -417,6 +352,28 @@ const Products = () => {
                     </div>
                   </div>
                   
+                  {/* Yield Type filter */}
+                  <div className="py-4 border-b border-gray-200 dark:border-gray-800">
+                    <h4 className="text-sm font-medium mb-3">Yield Type</h4>
+                    <div className="space-y-2">
+                      {yieldTypes.map(yieldType => (
+                        <div key={yieldType} className="flex items-center">
+                          <Checkbox 
+                            id={`filter-yield-${yieldType}`} 
+                            checked={yieldTypeFilters.includes(yieldType)}
+                            onCheckedChange={() => toggleYieldTypeFilter(yieldType)}
+                          />
+                          <label 
+                            htmlFor={`filter-yield-${yieldType}`} 
+                            className="ml-2 text-sm cursor-pointer"
+                          >
+                            {yieldType}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
                   {/* Price range filter */}
                   <div className="py-4">
                     <h4 className="text-sm font-medium mb-3">Price Range</h4>
@@ -457,7 +414,7 @@ const Products = () => {
                   <div className="glass-card rounded-xl p-10 text-center">
                     <h3 className="text-xl font-medium mb-2">No products found</h3>
                     <p className="text-muted-foreground mb-4">
-                      Try adjusting your filters to find what you're looking for.
+                      Try adjusting your filters or search terms to find what you're looking for.
                     </p>
                     <Button 
                       variant="outline"

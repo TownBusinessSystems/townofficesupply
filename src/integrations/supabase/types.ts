@@ -9,21 +9,6 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      "Newsletter Subscriptions": {
-        Row: {
-          dateTime: string
-          email: string
-        }
-        Insert: {
-          dateTime?: string
-          email: string
-        }
-        Update: {
-          dateTime?: string
-          email?: string
-        }
-        Relationships: []
-      }
       Transactions: {
         Row: {
           dateTime: string

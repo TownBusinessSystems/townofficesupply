@@ -14,6 +14,11 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   const { addToCart } = useCart();
+  
+  // Calculate discount percentage if originalPrice exists
+  const discountPercentage = product.originalPrice 
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
+    : 0;
 
   return (
     <motion.div
@@ -40,6 +45,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
               {product.color}
             </Badge>
           )}
+          
+          {discountPercentage > 0 && (
+            <Badge className="bg-red-500 text-white">
+              {discountPercentage}% OFF
+            </Badge>
+          )}
         </div>
       </div>
       
@@ -59,6 +70,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
         <div className="mt-auto flex items-end justify-between">
           <div>
             <span className="text-lg font-semibold">${product.price.toFixed(2)}</span>
+            {product.originalPrice && (
+              <span className="text-sm line-through ml-2 text-muted-foreground">
+                ${product.originalPrice.toFixed(2)}
+              </span>
+            )}
             {product.yield && (
               <span className="text-xs block text-muted-foreground mt-1">
                 {product.yield} pages

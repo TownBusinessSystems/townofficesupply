@@ -18,111 +18,7 @@ import Footer from "@/components/layout/Footer";
 import FeaturedSection from "@/components/ui/FeaturedSection";
 import { useCart, Product } from "@/context/CartContext";
 import CartDrawer from "@/components/ui/CartDrawer";
-
-// Mock data for products
-const allProducts: Product[] = [
-  // Ink products
-  {
-    id: "ink-1",
-    name: "HP 63XL Black Ink Cartridge",
-    price: 34.99,
-    image: "https://m.media-amazon.com/images/I/71umG0IYuLL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "ink",
-    compatibility: ["HP Deskjet 1112", "HP Envy 4520", "HP OfficeJet 3830"],
-    color: "Black",
-    yield: "480"
-  },
-  {
-    id: "ink-2",
-    name: "Canon PG-245 Black Ink Cartridge",
-    price: 19.99,
-    image: "https://m.media-amazon.com/images/I/61tmihvQHdL._AC_SL1500_.jpg",
-    brand: "Canon",
-    category: "ink",
-    compatibility: ["Canon PIXMA MG2420", "Canon PIXMA MG2520", "Canon PIXMA MG2920"],
-    color: "Black",
-    yield: "180"
-  },
-  // ... (copy the rest of the allProducts array from Products.tsx)
-  {
-    id: "ink-3",
-    name: "Epson 702 Magenta Ink Cartridge",
-    price: 21.99,
-    image: "https://m.media-amazon.com/images/I/71zzjjqN9oL._AC_SL1500_.jpg",
-    brand: "Epson",
-    category: "ink",
-    compatibility: ["Epson WorkForce Pro WF-3720", "Epson WorkForce Pro WF-3733"],
-    color: "Magenta",
-    yield: "300"
-  },
-  {
-    id: "ink-4",
-    name: "Brother LC3013 Cyan Ink Cartridge",
-    price: 24.99,
-    image: "https://m.media-amazon.com/images/I/61AUWL+sIiL._AC_SL1500_.jpg",
-    brand: "Brother",
-    category: "ink",
-    compatibility: ["Brother MFC-J491DW", "Brother MFC-J497DW", "Brother MFC-J895DW"],
-    color: "Cyan",
-    yield: "400"
-  },
-  {
-    id: "ink-5",
-    name: "HP 67XL Tri-Color Ink Cartridge",
-    price: 36.99,
-    image: "https://m.media-amazon.com/images/I/71rrRJQ7sdL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "ink",
-    compatibility: ["HP DeskJet 2732", "HP DeskJet Plus 4155", "HP ENVY 6055"],
-    color: "Tri-Color",
-    yield: "200"
-  },
-  {
-    id: "ink-6",
-    name: "Canon CLI-281 Yellow Ink Tank",
-    price: 17.99,
-    image: "https://m.media-amazon.com/images/I/71TQOkLMiML._AC_SL1500_.jpg",
-    brand: "Canon",
-    category: "ink",
-    compatibility: ["Canon PIXMA TS6120", "Canon PIXMA TS8120", "Canon PIXMA TR8520"],
-    color: "Yellow",
-    yield: "256"
-  },
-  {
-    id: "toner-1",
-    name: "HP 26A Black Toner Cartridge",
-    price: 84.99,
-    image: "https://m.media-amazon.com/images/I/71cvRNILxDL._AC_SL1500_.jpg",
-    brand: "HP",
-    category: "toner",
-    compatibility: ["HP LaserJet Pro M402dn", "HP LaserJet Pro MFP M426fdw"],
-    color: "Black",
-    yield: "3,100"
-  },
-  {
-    id: "toner-2",
-    name: "Brother TN660 High Yield Toner",
-    price: 69.99,
-    image: "https://m.media-amazon.com/images/I/71C+-YsOkfL._AC_SL1500_.jpg",
-    brand: "Brother",
-    category: "toner",
-    compatibility: ["Brother HL-L2340DW", "Brother HL-L2360DW", "Brother DCP-L2540DW"],
-    color: "Black",
-    yield: "2,600"
-  },
-  {
-    id: "toner-3",
-    name: "Canon 055 Cyan Toner Cartridge",
-    price: 76.99,
-    image: "https://m.media-amazon.com/images/I/51NUf28QpVL._AC_SL1000_.jpg",
-    brand: "Canon",
-    category: "toner",
-    compatibility: ["Canon Color imageCLASS MF743Cdw", "Canon LBP664Cdw"],
-    color: "Cyan",
-    yield: "2,100"
-  }
-];
+import { products } from "@/data/productData";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -131,6 +27,11 @@ const ProductDetail = () => {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { addToCart } = useCart();
+  
+  // Calculate discount percentage if originalPrice exists
+  const discountPercentage = product?.originalPrice 
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
+    : 0;
   
   // Mock product images array (in real app, this would come from database)
   const productImages = [
@@ -141,12 +42,12 @@ const ProductDetail = () => {
   
   // Find product and related products
   useEffect(() => {
-    const foundProduct = allProducts.find(p => p.id === id) || null;
+    const foundProduct = products.find(p => p.id === id) || null;
     setProduct(foundProduct);
     
     if (foundProduct) {
       // Find related products (same category, different id)
-      const related = allProducts
+      const related = products
         .filter(p => 
           p.category === foundProduct.category && 
           p.id !== foundProduct.id
@@ -278,30 +179,50 @@ const ProductDetail = () => {
                   <Badge variant="outline">
                     {product.color || "Standard"}
                   </Badge>
+                  {discountPercentage > 0 && (
+                    <Badge className="bg-red-500 text-white">
+                      {discountPercentage}% OFF
+                    </Badge>
+                  )}
                 </div>
                 
                 <h1 className="text-3xl font-display font-medium mb-2">
                   {product.name}
                 </h1>
                 
-                <div className="flex items-center mb-4">
-                  <span className="text-sm text-muted-foreground mr-3">
+                <div className="flex flex-wrap items-center mb-4 gap-3">
+                  <span className="text-sm text-muted-foreground">
                     Brand: <span className="font-medium">{product.brand}</span>
                   </span>
-                  <span className="text-sm text-muted-foreground mr-3">
+                  <span className="text-sm text-muted-foreground">
                     Yield: <span className="font-medium">{product.yield || "Standard"} pages</span>
+                  </span>
+                  <span className="text-sm text-muted-foreground">
+                    Type: <span className="font-medium">{product.cartridgeYieldType || "Standard"}</span>
                   </span>
                 </div>
                 
-                <div className="text-2xl font-semibold mb-4">
-                  ${product.price.toFixed(2)}
+                <div className="mb-4">
+                  <div className="flex items-center">
+                    <span className="text-2xl font-semibold">${product.price.toFixed(2)}</span>
+                    {product.originalPrice && (
+                      <>
+                        <span className="text-base line-through ml-3 text-muted-foreground">
+                          ${product.originalPrice.toFixed(2)}
+                        </span>
+                        <span className="text-sm ml-2 text-red-500 font-medium">
+                          Save ${(product.originalPrice - product.price).toFixed(2)}
+                        </span>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
               
               <div className="border-t border-b border-gray-200 dark:border-gray-800 py-6">
                 <h3 className="font-medium mb-3">Description</h3>
                 <p className="text-muted-foreground">
-                  Original {product.brand} {product.category === "ink" ? "ink" : "toner"} cartridge designed for optimal print quality and reliability. Compatible with various {product.brand} printer models including {product.compatibility?.join(", ")}.
+                  {product.description || `Original ${product.brand} ${product.category === "ink" ? "ink" : "toner"} cartridge designed for optimal print quality and reliability. Compatible with various ${product.brand} printer models including ${product.compatibility?.join(", ")}.`}
                 </p>
               </div>
               
@@ -371,9 +292,9 @@ const ProductDetail = () => {
                 <div className="flex items-start">
                   <ShieldCheck size={20} className="text-accent mr-4 mt-0.5" />
                   <div>
-                    <h4 className="font-medium text-sm">Quality Guarantee</h4>
+                    <h4 className="font-medium text-sm">Lifetime Guarantee</h4>
                     <p className="text-sm text-muted-foreground">
-                      Genuine {product.brand} product with 100% satisfaction guarantee.
+                      All our compatible cartridges come with a lifetime guarantee for peace of mind.
                     </p>
                   </div>
                 </div>
@@ -383,7 +304,7 @@ const ProductDetail = () => {
                   <div>
                     <h4 className="font-medium text-sm">Fast Shipping</h4>
                     <p className="text-sm text-muted-foreground">
-                      Free shipping on orders over $50. Same-day dispatch for orders before 2pm.
+                      Enjoy free 1-3 day shipping on all orders.
                     </p>
                   </div>
                 </div>
@@ -430,16 +351,16 @@ const ProductDetail = () => {
                 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-sm font-medium text-muted-foreground">Model Number</h3>
-                    <p>{product.name.split(' ').slice(0, 2).join(' ')}</p>
+                    <h3 className="text-sm font-medium text-muted-foreground">OEM Number</h3>
+                    <p>{product.oemNumber || "Not specified"}</p>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-muted-foreground">Condition</h3>
-                    <p>New, Genuine OEM</p>
+                    <h3 className="text-sm font-medium text-muted-foreground">Yield Type</h3>
+                    <p>{product.cartridgeYieldType || "Standard"}</p>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-muted-foreground">Warranty</h3>
-                    <p>1 Year Manufacturer Warranty</p>
+                    <h3 className="text-sm font-medium text-muted-foreground">Shelf Life</h3>
+                    <p>{product.shelfLife || "24-36 Months"}</p>
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-muted-foreground">Packaging</h3>

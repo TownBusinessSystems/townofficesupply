@@ -1,10 +1,6 @@
 
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
-import HeroSearch from "./HeroSearch";
 
 interface HeroContentProps {
   currentIndex: number;
@@ -72,7 +68,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ currentIndex, heroContent }) 
               {renderHighlightedHeading(heroContent[currentIndex].heading, currentIndex)}
             </h1>
             <motion.p 
-              className="text-lg text-muted-foreground max-w-lg"
+              className="text-lg text-muted-foreground max-w-lg mb-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.2 }}
@@ -81,22 +77,6 @@ const HeroContent: React.FC<HeroContentProps> = ({ currentIndex, heroContent }) 
             </motion.p>
           </motion.div>
         </AnimatePresence>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="flex flex-col sm:flex-row sm:items-center gap-4"
-      >
-        <Button asChild className="bg-accent hover:bg-accent/90 text-white px-6 py-2 h-10 w-fit">
-          <Link to="/products">
-            Shop Deals
-            <ChevronRight size={16} className="ml-2" />
-          </Link>
-        </Button>
-        
-        <HeroSearch />
       </motion.div>
     </div>
   );

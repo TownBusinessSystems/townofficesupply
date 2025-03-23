@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
     }
   ];
 
-  // Brand logo images - updated with the 8 requested brands
+  // Brand logo images
   const brandLogos = [
     { name: "HP", image: "/lovable-uploads/4de92062-abd6-4268-bdc6-2b5ec3f6d108.png" },
     { name: "Toshiba", image: "/lovable-uploads/c178c966-b78f-4eeb-987d-ffb0e99d982e.png" },
@@ -63,8 +63,8 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
       </div>
 
       <div className="container px-4 mx-auto">
-        {/* Hero content: Text + Image */}
-        <div className="flex flex-col lg:flex-row lg:items-center py-6 sm:py-8 lg:py-12">
+        {/* Hero content: Text + Image - adjusted spacing to account for removed elements */}
+        <div className="flex flex-col lg:flex-row lg:items-center py-12 sm:py-16 lg:py-20">
           <HeroContent 
             currentIndex={displayIndex} 
             heroContent={heroContent} 

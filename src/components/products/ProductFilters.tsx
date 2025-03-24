@@ -1,10 +1,11 @@
 
 import React from "react";
-import { X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
+import { Input } from "@/components/ui/input";
 
 interface ProductFiltersProps {
   categoryFilter: string | null;
@@ -12,11 +13,13 @@ interface ProductFiltersProps {
   colorFilters: string[];
   yieldTypeFilters: string[];
   priceRange: [number, number];
+  searchQuery: string;
   setCategoryFilter: (category: string | null) => void;
   toggleBrandFilter: (brand: string) => void;
   toggleColorFilter: (color: string) => void;
   toggleYieldTypeFilter: (yieldType: string) => void;
   setPriceRange: (range: [number, number]) => void;
+  clearSearchQuery: () => void;
   clearFilters: () => void;
 }
 
@@ -30,11 +33,13 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
   colorFilters,
   yieldTypeFilters,
   priceRange,
+  searchQuery,
   setCategoryFilter,
   toggleBrandFilter,
   toggleColorFilter,
   toggleYieldTypeFilter,
   setPriceRange,
+  clearSearchQuery,
   clearFilters
 }) => {
   return (
@@ -51,6 +56,25 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             Clear all
           </Button>
         </div>
+        
+        {/* Search filter */}
+        {searchQuery && (
+          <div className="py-4 border-b border-gray-200 dark:border-gray-800">
+            <h4 className="text-sm font-medium mb-3">Search</h4>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">{searchQuery}</span>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xs"
+                onClick={clearSearchQuery}
+              >
+                <X size={14} className="mr-1" />
+                Clear
+              </Button>
+            </div>
+          </div>
+        )}
         
         {/* Category filter */}
         <div className="py-4 border-b border-gray-200 dark:border-gray-800">

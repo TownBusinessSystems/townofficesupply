@@ -1,16 +1,23 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export function useNavSearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery(""); // Reset after search
+      // Preserve existing query parameters
+      const params = new URLSearchParams(location.search);
+      params.set("search", searchQuery.trim());
+      
+      navigate({
+        pathname: "/products",
+        search: params.toString()
+      });
     }
   };
 

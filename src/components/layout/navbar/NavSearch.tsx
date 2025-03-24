@@ -1,14 +1,23 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useNavSearch } from "@/hooks/useNavSearch";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useLocation } from "react-router-dom";
 
 const NavSearch: React.FC = () => {
-  const { searchQuery, handleSearch, handleSearchInputChange } = useNavSearch();
+  const { searchQuery, handleSearch, handleSearchInputChange, setSearchQuery } = useNavSearch();
   const isMobile = useIsMobile();
+  const location = useLocation();
+
+  // Clear search input when navigating away from products page
+  useEffect(() => {
+    if (!location.pathname.includes("/products")) {
+      setSearchQuery("");
+    }
+  }, [location.pathname, setSearchQuery]);
 
   return (
     <form 
@@ -23,6 +32,19 @@ const NavSearch: React.FC = () => {
         onChange={handleSearchInputChange}
         aria-label="Search products"
       />
+      {searchQuery ? (
+        <Button 
+          type="button" 
+          onClick={() => setSearchQuery("")}
+          size="icon" 
+          variant="ghost"
+          className="absolute right-9 top-1/2 -translate-y-1/2 h-8 w-8 md:h-10 md:w-10 text-muted-foreground
+                    touch-manipulation transition-all"
+          aria-label="Clear search"
+        >
+          <X size={isMobile ? 16 : 20} />
+        </Button>
+      ) : null}
       <Button 
         type="submit" 
         size="icon" 

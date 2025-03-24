@@ -3,15 +3,18 @@ import React from "react";
 import { X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 
 interface ActiveFiltersProps {
   brandFilters: string[];
   colorFilters: string[];
   yieldTypeFilters: string[];
   priceRange: [number, number];
+  searchQuery: string;
   toggleBrandFilter: (brand: string) => void;
   toggleColorFilter: (color: string) => void;
   toggleYieldTypeFilter: (yieldType: string) => void;
+  clearSearchQuery: () => void;
   clearFilters: () => void;
 }
 
@@ -20,21 +23,39 @@ const ActiveFilters: React.FC<ActiveFiltersProps> = ({
   colorFilters,
   yieldTypeFilters,
   priceRange,
+  searchQuery,
   toggleBrandFilter,
   toggleColorFilter,
   toggleYieldTypeFilter,
+  clearSearchQuery,
   clearFilters
 }) => {
   const hasActiveFilters = brandFilters.length > 0 || 
                          colorFilters.length > 0 || 
                          yieldTypeFilters.length > 0 || 
                          priceRange[0] > 0 || 
-                         priceRange[1] < 250;
+                         priceRange[1] < 250 ||
+                         searchQuery !== "";
   
   if (!hasActiveFilters) return null;
   
   return (
     <div className="flex flex-wrap gap-2 mb-6">
+      {searchQuery && (
+        <Badge 
+          variant="secondary"
+          className="px-3 py-1 flex items-center gap-1"
+        >
+          <Search size={14} className="mr-1" />
+          Search: {searchQuery}
+          <X 
+            size={14} 
+            className="ml-1 cursor-pointer"
+            onClick={clearSearchQuery}
+          />
+        </Badge>
+      )}
+      
       {brandFilters.map(brand => (
         <Badge 
           key={brand} 

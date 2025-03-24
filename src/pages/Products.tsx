@@ -26,6 +26,7 @@ const Products = () => {
     toggleColorFilter,
     toggleYieldTypeFilter,
     setPriceRange,
+    clearSearchQuery,
     clearFilters
   } = useProductFilters();
   
@@ -40,13 +41,11 @@ const Products = () => {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
               <div>
                 <h1 className="text-3xl md:text-4xl font-display font-medium">
-                  {searchQuery 
-                    ? `Search Results for "${searchQuery}"` 
-                    : categoryFilter === "ink" 
-                      ? "Ink Cartridges" 
-                      : categoryFilter === "toner" 
-                        ? "Toner Cartridges" 
-                        : "All Products"}
+                  {categoryFilter === "ink" 
+                    ? "Ink Cartridges" 
+                    : categoryFilter === "toner" 
+                      ? "Toner Cartridges" 
+                      : "All Products"}
                 </h1>
                 <p className="text-muted-foreground mt-2">
                   {filteredProducts.length} products available
@@ -69,9 +68,11 @@ const Products = () => {
               colorFilters={colorFilters}
               yieldTypeFilters={yieldTypeFilters}
               priceRange={priceRange}
+              searchQuery={searchQuery}
               toggleBrandFilter={toggleBrandFilter}
               toggleColorFilter={toggleColorFilter}
               toggleYieldTypeFilter={toggleYieldTypeFilter}
+              clearSearchQuery={clearSearchQuery}
               clearFilters={clearFilters}
             />
             
@@ -88,11 +89,13 @@ const Products = () => {
                   colorFilters={colorFilters}
                   yieldTypeFilters={yieldTypeFilters}
                   priceRange={priceRange}
+                  searchQuery={searchQuery}
                   setCategoryFilter={setCategoryFilter}
                   toggleBrandFilter={toggleBrandFilter}
                   toggleColorFilter={toggleColorFilter}
                   toggleYieldTypeFilter={toggleYieldTypeFilter}
                   setPriceRange={setPriceRange}
+                  clearSearchQuery={clearSearchQuery}
                   clearFilters={clearFilters}
                 />
               </div>

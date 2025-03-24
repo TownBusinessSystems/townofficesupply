@@ -1,11 +1,12 @@
 
 import { useState, useEffect } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Product } from "@/context/CartContext";
 import { products } from "@/data/productData";
 
 export const useProductFilters = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   
@@ -116,14 +117,29 @@ export const useProductFilters = () => {
     );
   };
   
+  // Clear search query
+  const clearSearchQuery = () => {
+    setSearchQuery("");
+    
+    // Update URL without search parameter
+    const params = new URLSearchParams(location.search);
+    params.delete("search");
+    
+    navigate({
+      pathname: location.pathname,
+      search: params.toString() ? `?${params.toString()}` : ""
+    }, { replace: true });
+  };
+  
   // Clear all filters
   const clearFilters = () => {
     setBrandFilters([]);
     setColorFilters([]);
     setYieldTypeFilters([]);
     setPriceRange([0, 250]);
+    setSearchQuery("");
     
-    // Don't clear category or search from URL
+    // Don't clear category from URL
     const params = new URLSearchParams(location.search);
     const newParams = new URLSearchParams();
     
@@ -131,13 +147,10 @@ export const useProductFilters = () => {
       newParams.set("category", params.get("category")!);
     }
     
-    if (params.has("search")) {
-      newParams.set("search", params.get("search")!);
-    }
-    
-    window.history.replaceState({}, "", 
-      location.pathname + (newParams.toString() ? `?${newParams.toString()}` : "")
-    );
+    navigate({
+      pathname: location.pathname,
+      search: newParams.toString() ? `?${newParams.toString()}` : ""
+    }, { replace: true });
   };
   
   return {
@@ -153,6 +166,8 @@ export const useProductFilters = () => {
     toggleColorFilter,
     toggleYieldTypeFilter,
     setPriceRange,
-    clearFilters
+    clearSearchQuery,
+    clearFilters,
+    setSearchQuery
   };
 };

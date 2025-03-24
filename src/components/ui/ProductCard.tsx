@@ -22,9 +22,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
     : 0;
 
   // Fix image path by removing the "public" prefix if it exists
-  const imagePath = product.image?.startsWith("public/") 
-    ? product.image.substring(7) 
-    : product.image;
+  const fixImagePath = (path: string | undefined): string => {
+    if (!path) return "https://placehold.co/600x400/e2e8f0/a1a1aa?text=Office+Supply";
+    
+    // Handle various image path scenarios
+    if (path.startsWith("public/")) {
+      return path.substring(7);
+    } else if (path.startsWith("/")) {
+      return path.substring(1);
+    }
+    return path;
+  };
+
+  const imagePath = fixImagePath(product.image);
     
   const handleCardClick = () => {
     navigate(`/product/${product.id}`);
@@ -45,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
     >
       <div className="overflow-hidden relative">
         <img
-          src={imagePath || "https://placehold.co/600x400/e2e8f0/a1a1aa?text=Office+Supply"}
+          src={imagePath}
           alt={product.name}
           className="w-full h-48 object-contain object-center p-4 bg-white dark:bg-gray-900 transition-transform duration-500 group-hover:scale-110"
           loading="lazy"

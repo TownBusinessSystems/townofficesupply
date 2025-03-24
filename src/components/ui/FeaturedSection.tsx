@@ -14,14 +14,14 @@ const FeaturedSection: React.FC<FeaturedSectionProps> = ({
   products 
 }) => {
   return (
-    <section className="py-16">
+    <section className="py-8">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-10"
+          className="mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-display font-medium mb-2">{title}</h2>
           <div className="h-1 w-16 bg-accent rounded"></div>

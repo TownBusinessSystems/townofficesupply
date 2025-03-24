@@ -45,7 +45,7 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow pt-24 px-4">
+        <main className="flex-grow pt-10 px-4">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center py-16">
               <h2 className="text-2xl font-medium mb-4">Product not found</h2>
@@ -70,11 +70,11 @@ const ProductDetail = () => {
       <Navbar />
       <CartDrawer />
       
-      <main className="flex-grow pt-16">
-        <div className="container px-4 mx-auto max-w-6xl py-12">
+      <main className="flex-grow pt-8">
+        <div className="container px-4 mx-auto max-w-6xl py-6">
           <ProductBreadcrumbs product={product} />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
             {/* Product Images */}
             <div className="space-y-8">
               <ProductGallery 
@@ -93,10 +93,12 @@ const ProductDetail = () => {
         
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <FeaturedSection
-            title="Related Products"
-            products={relatedProducts}
-          />
+          <div className="py-8">
+            <FeaturedSection
+              title="Related Products"
+              products={relatedProducts}
+            />
+          </div>
         )}
       </main>
       

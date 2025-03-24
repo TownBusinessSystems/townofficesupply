@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 interface ProductGalleryProps {
@@ -14,7 +14,14 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
   // Fix image paths by removing the "public" prefix if it exists
   const fixImagePath = (path: string | undefined): string => {
     if (!path) return "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Product+Image";
-    return path.startsWith("public/") ? path.substring(7) : path;
+    
+    // Handle various image path scenarios
+    if (path.startsWith("public/")) {
+      return path.substring(7);
+    } else if (path.startsWith("/")) {
+      return path.substring(1);
+    }
+    return path;
   };
 
   const mainImage = fixImagePath(productImages[0]);

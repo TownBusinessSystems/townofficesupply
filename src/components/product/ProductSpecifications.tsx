@@ -19,11 +19,7 @@ const ProductSpecifications: React.FC<ProductSpecificationsProps> = ({ product }
   const yieldType = product.cartridgeYieldType || "Standard Yield";
 
   return (
-    <section className="mt-20">
-      <h2 className="text-2xl font-display font-medium mb-6">
-        Technical Specifications
-      </h2>
-      
+    <section>
       <Card className="glass-card rounded-xl overflow-hidden border-none">
         <CardHeader className="bg-gray-50 dark:bg-gray-800/50 pb-2">
           <CardTitle className="text-lg">Product Details</CardTitle>

@@ -20,9 +20,7 @@ const ProductDetail = () => {
   
   // Mock product images array (in real app, this would come from database)
   const productImages = product ? [
-    product.image,
-    "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Product+Image+2",
-    "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Product+Image+3"
+    product.image
   ] : [];
   
   // Find product and related products
@@ -78,17 +76,19 @@ const ProductDetail = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Product Images */}
-            <ProductGallery 
-              productImages={productImages} 
-              productName={product.name} 
-            />
+            <div className="space-y-8">
+              <ProductGallery 
+                productImages={productImages} 
+                productName={product.name} 
+              />
+              
+              {/* Product Details - Moved here from below */}
+              <ProductSpecifications product={product} />
+            </div>
             
             {/* Product Details */}
             <ProductInfo product={product} />
           </div>
-          
-          {/* Technical Specifications */}
-          <ProductSpecifications product={product} />
         </div>
         
         {/* Related Products */}

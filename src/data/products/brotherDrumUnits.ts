@@ -8,7 +8,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR400 Drum Unit",
     price: 79.99,
     originalPrice: 186.99,
-    image: "/placeholder.svg", // Using placeholder since no specific image was provided
+    image: "/lovable-uploads/cce7338e-05b7-46af-8ac3-a7f06e4041a1.png", // Updated image path
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-1200", "DCP-1400", "HL-1230", "HL-1240", "HL-1250", "HL-1270N", "MFC-8300", "MFC-8500", "MFC-8600", "MFC-8700"],
@@ -93,7 +93,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR630 Drum Unit",
     price: 49.99,
     originalPrice: 99.99,
-    image: "/lovable-uploads/0a19d3dc-ba65-4b19-ba59-8bfcff1cdb90.png",
+    image: "/lovable-uploads/e3bee3de-3264-497f-9299-f921a22aacf2.png", // Updated image path
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-L2520DW", "HL-L2300D", "HL-L2340DW", "MFC-L2700DW", "MFC-L2740DW"],

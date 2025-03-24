@@ -1,8 +1,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ShoppingCart, Info } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart, Product } from "@/context/CartContext";
@@ -14,6 +14,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   
   // Calculate discount percentage if originalPrice exists
   const discountPercentage = product.originalPrice 
@@ -24,13 +25,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   const imagePath = product.image?.startsWith("public/") 
     ? product.image.substring(7) 
     : product.image;
+    
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+  
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent navigation when clicking the add to cart button
+    addToCart(product);
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="glass-card rounded-xl overflow-hidden group h-full flex flex-col"
+      className="glass-card rounded-xl overflow-hidden group h-full flex flex-col cursor-pointer"
+      onClick={handleCardClick}
     >
       <div className="overflow-hidden relative">
         <img
@@ -87,22 +98,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
             )}
           </div>
           
-          <div className="flex space-x-2">
+          <div>
             <Button 
-              variant="ghost" 
-              size="icon"
-              onClick={() => {}} 
-              asChild
-              className="rounded-full h-9 w-9 hover:bg-gray-100 dark:hover:bg-gray-800"
-            >
-              <Link to={`/product/${product.id}`}>
-                <Info size={18} />
-                <span className="sr-only">Product details</span>
-              </Link>
-            </Button>
-            
-            <Button 
-              onClick={() => addToCart(product)}
+              onClick={handleAddToCart}
               size="icon"
               className="rounded-full h-9 w-9 bg-accent hover:bg-accent/90 text-white"
             >

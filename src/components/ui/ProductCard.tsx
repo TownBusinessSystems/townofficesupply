@@ -6,6 +6,7 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart, Product } from "@/context/CartContext";
+import { fixImagePath } from "@/utils/imagePathUtils";
 
 interface ProductCardProps {
   product: Product;
@@ -21,20 +22,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
     : 0;
 
-  // Fix image path by removing the "public" prefix if it exists
-  const fixImagePath = (path: string | undefined): string => {
-    if (!path) return "https://placehold.co/600x400/e2e8f0/a1a1aa?text=Office+Supply";
-    
-    // Handle various image path scenarios
-    if (path.startsWith("public/")) {
-      return path.substring(7);
-    } else if (path.startsWith("/")) {
-      return path.substring(1);
-    }
-    return path;
-  };
-
+  // Use our utility function to handle image paths
   const imagePath = fixImagePath(product.image);
+  console.log("ProductCard image path:", product.id, imagePath);
     
   const handleCardClick = () => {
     navigate(`/product/${product.id}`);

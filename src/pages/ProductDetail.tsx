@@ -18,11 +18,6 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   
-  // Mock product images array (in real app, this would come from database)
-  const productImages = product ? [
-    product.image
-  ] : [];
-  
   // Find product and related products
   useEffect(() => {
     const foundProduct = products.find(p => p.id === id) || null;
@@ -40,6 +35,10 @@ const ProductDetail = () => {
       setRelatedProducts(related);
     }
   }, [id]);
+  
+  // Create productImages array with the main image
+  const productImages = product ? [product.image] : [];
+  console.log("Product in detail page:", product?.id, "Image path:", product?.image);
   
   if (!product) {
     return (

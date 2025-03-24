@@ -1,6 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { fixImagePath } from "@/utils/imagePathUtils";
 
 interface ProductGalleryProps {
   productImages: (string | undefined)[];
@@ -11,20 +12,9 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
   productImages, 
   productName 
 }) => {
-  // Fix image paths by removing the "public" prefix if it exists
-  const fixImagePath = (path: string | undefined): string => {
-    if (!path) return "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Product+Image";
-    
-    // Handle various image path scenarios
-    if (path.startsWith("public/")) {
-      return path.substring(7);
-    } else if (path.startsWith("/")) {
-      return path.substring(1);
-    }
-    return path;
-  };
-
+  // Use our utility function to get the main image path
   const mainImage = fixImagePath(productImages[0]);
+  console.log("ProductGallery using utility function - image path:", mainImage);
 
   return (
     <motion.div

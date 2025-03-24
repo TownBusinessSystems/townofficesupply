@@ -49,6 +49,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
           alt={product.name}
           className="w-full h-48 object-contain object-center p-4 bg-white dark:bg-gray-900 transition-transform duration-500 group-hover:scale-110"
           loading="lazy"
+          onError={(e) => {
+            console.error(`Error loading image for product ${product.id}: ${imagePath}`);
+            e.currentTarget.src = "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Image+Not+Found";
+          }}
         />
         
         <div className="absolute top-3 left-3 flex flex-col gap-2">

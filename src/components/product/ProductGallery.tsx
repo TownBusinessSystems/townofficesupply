@@ -15,6 +15,11 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
   // Use our utility function to get the main image path
   const mainImage = fixImagePath(productImages[0]);
   console.log("ProductGallery using utility function - image path:", mainImage);
+  
+  // Debugging
+  if (!productImages || productImages.length === 0) {
+    console.error("ProductGallery: No product images provided");
+  }
 
   return (
     <motion.div
@@ -28,6 +33,10 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
           src={mainImage}
           alt={productName}
           className="w-full h-auto object-contain aspect-square"
+          onError={(e) => {
+            console.error(`Error loading image: ${mainImage}`);
+            e.currentTarget.src = "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Image+Not+Found";
+          }}
         />
       </div>
     </motion.div>

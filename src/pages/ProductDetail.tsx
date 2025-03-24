@@ -20,7 +20,9 @@ const ProductDetail = () => {
   
   // Find product and related products
   useEffect(() => {
+    console.log("Looking for product with ID:", id);
     const foundProduct = products.find(p => p.id === id) || null;
+    console.log("Found product:", foundProduct);
     setProduct(foundProduct);
     
     if (foundProduct) {
@@ -37,8 +39,9 @@ const ProductDetail = () => {
   }, [id]);
   
   // Create productImages array with the main image
-  const productImages = product ? [product.image] : [];
+  const productImages = product?.image ? [product.image] : [];
   console.log("Product in detail page:", product?.id, "Image path:", product?.image);
+  console.log("Product images array for gallery:", productImages);
   
   if (!product) {
     return (

@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { fixImagePath } from "@/utils/imagePathUtils";
 
@@ -12,13 +12,15 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
   productImages, 
   productName 
 }) => {
+  const [imageError, setImageError] = useState(false);
+  
   // Use our utility function to get the main image path
   const mainImage = fixImagePath(productImages[0]);
-  console.log("ProductGallery using utility function - image path:", mainImage);
+  console.log("ProductGallery - product name:", productName, "image path:", mainImage);
   
   // Debugging
   if (!productImages || productImages.length === 0) {
-    console.error("ProductGallery: No product images provided");
+    console.error("ProductGallery: No product images provided for", productName);
   }
 
   return (
@@ -29,15 +31,26 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
       className="space-y-4"
     >
       <div className="glass-card p-6 rounded-xl overflow-hidden">
-        <img
-          src={mainImage}
-          alt={productName}
-          className="w-full h-auto object-contain aspect-square"
-          onError={(e) => {
-            console.error(`Error loading image: ${mainImage}`);
-            e.currentTarget.src = "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Image+Not+Found";
-          }}
-        />
+        {imageError ? (
+          <div className="w-full h-auto aspect-square flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-center p-4">
+            <p className="text-muted-foreground">
+              {productName}
+              <br />
+              <span className="text-sm">Image not available</span>
+            </p>
+          </div>
+        ) : (
+          <img
+            src={mainImage}
+            alt={productName}
+            className="w-full h-auto object-contain aspect-square"
+            onError={(e) => {
+              console.error(`Error loading image for ${productName}: ${mainImage}`);
+              setImageError(true);
+              e.currentTarget.src = "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Image+Not+Found";
+            }}
+          />
+        )}
       </div>
     </motion.div>
   );

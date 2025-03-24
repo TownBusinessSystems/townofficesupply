@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
@@ -16,6 +16,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const [imageError, setImageError] = useState(false);
   
   // Calculate discount percentage if originalPrice exists
   const discountPercentage = product.originalPrice 
@@ -24,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
 
   // Use our utility function to handle image paths
   const imagePath = fixImagePath(product.image);
-  console.log("ProductCard image path:", product.id, imagePath);
+  console.log("ProductCard - product id:", product.id, "image path:", imagePath);
     
   const handleCardClick = () => {
     navigate(`/product/${product.id}`);
@@ -44,16 +45,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
       onClick={handleCardClick}
     >
       <div className="overflow-hidden relative">
-        <img
-          src={imagePath}
-          alt={product.name}
-          className="w-full h-48 object-contain object-center p-4 bg-white dark:bg-gray-900 transition-transform duration-500 group-hover:scale-110"
-          loading="lazy"
-          onError={(e) => {
-            console.error(`Error loading image for product ${product.id}: ${imagePath}`);
-            e.currentTarget.src = "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Image+Not+Found";
-          }}
-        />
+        {imageError ? (
+          <div className="w-full h-48 flex items-center justify-center bg-white dark:bg-gray-900 p-4 text-center">
+            <p className="text-muted-foreground">
+              {product.name}
+              <br />
+              <span className="text-xs">Image not available</span>
+            </p>
+          </div>
+        ) : (
+          <img
+            src={imagePath}
+            alt={product.name}
+            className="w-full h-48 object-contain object-center p-4 bg-white dark:bg-gray-900 transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+            onError={(e) => {
+              console.error(`Error loading image for product ${product.id}: ${imagePath}`);
+              setImageError(true);
+            }}
+          />
+        )}
         
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           <Badge className="bg-accent text-white">

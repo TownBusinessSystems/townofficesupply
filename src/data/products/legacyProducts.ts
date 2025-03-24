@@ -1,3 +1,4 @@
+
 import { Product } from "@/context/CartContext";
 
 // Legacy HP Toner Products
@@ -24,7 +25,7 @@ export const legacyProducts: Product[] = [
     name: "HP 36A (CB436A) Black Compatible Toner Cartridge",
     price: 35.99,
     originalPrice: 78.99,
-    image: "public/lovable-uploads/86ab5f54-4d74-4bf1-a08c-fb7180f336f7.png",
+    image: "/lovable-uploads/86ab5f54-4d74-4bf1-a08c-fb7180f336f7.png",
     brand: "HP",
     category: "toner",
     compatibility: ["LaserJet M1522n MFP", "LaserJet M1522nf MFP", "LaserJet P1505", "LaserJet P1505n"],
@@ -41,7 +42,7 @@ export const legacyProducts: Product[] = [
     name: "Compatible HP 78A Black Toner Cartridge (CE278A)",
     price: 35.99,
     originalPrice: 89.99,
-    image: "public/lovable-uploads/4f2fae83-26dc-4b6f-a136-9587af12c270.png",
+    image: "/lovable-uploads/4f2fae83-26dc-4b6f-a136-9587af12c270.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M1536dnf", "HP LaserJet Pro M1537dnf", "HP LaserJet Pro M1538dnf", "HP LaserJet Pro M1539dnf", "HP LaserJet Pro P1566", "HP LaserJet Pro P1606dn"],
@@ -58,7 +59,7 @@ export const legacyProducts: Product[] = [
     name: "Compatible HP 85A Black Toner Cartridge (CE285A)",
     price: 35.99,
     originalPrice: 89.99,
-    image: "public/lovable-uploads/be7bd96b-598b-4e8b-8cae-ada1a7ab6f12.png",
+    image: "/lovable-uploads/be7bd96b-598b-4e8b-8cae-ada1a7ab6f12.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M1212nf MFP", "HP LaserJet Pro M1217nfw MFP", "HP LaserJet Pro P1102", "HP LaserJet Pro P1102w", "HP LaserJet Pro P1109w"],
@@ -75,7 +76,7 @@ export const legacyProducts: Product[] = [
     name: "Compatible HP 05A Black Toner Cartridge (CE505A)",
     price: 42.99,
     originalPrice: 100.99,
-    image: "public/lovable-uploads/790324c2-5fe7-4415-902d-b6a5f4e6a221.png",
+    image: "/lovable-uploads/790324c2-5fe7-4415-902d-b6a5f4e6a221.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet P2035", "HP LaserJet P2035n", "HP LaserJet P2055d", "HP LaserJet P2055dn", "HP LaserJet P2055x"],
@@ -92,7 +93,7 @@ export const legacyProducts: Product[] = [
     name: "Compatible HP 05X Black Toner Cartridge (CE505X)",
     price: 42.99,
     originalPrice: 159.99,
-    image: "public/lovable-uploads/da1a69d1-10f5-4218-80d1-d819c831b37b.png",
+    image: "/lovable-uploads/da1a69d1-10f5-4218-80d1-d819c831b37b.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet P2055", "HP LaserJet P2055d", "HP LaserJet P2055dn", "HP LaserJet P2055x"],

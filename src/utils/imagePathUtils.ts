@@ -12,11 +12,14 @@ export const fixImagePath = (path: string | undefined): string => {
     return path;
   }
   
+  // Remove 'public/' prefix if it exists (common mistake in image paths)
+  let cleanPath = path.startsWith('public/') ? path.substring(7) : path;
+  
   // Ensure path starts with a slash for proper loading from the root
-  if (!path.startsWith('/')) {
-    return `/${path}`;
+  if (!cleanPath.startsWith('/')) {
+    cleanPath = `/${cleanPath}`;
   }
   
-  // Return the path with the slash
-  return path;
+  // Return the clean path
+  return cleanPath;
 };

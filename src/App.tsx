@@ -1,37 +1,34 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Index from "@/pages/Index";
+import Products from "@/pages/Products";
+import ProductDetail from "@/pages/ProductDetail";
+import Privacy from "@/pages/Privacy";
+import NotFound from "@/pages/NotFound";
+import ProductReport from "@/pages/ProductReport";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import { CartProvider } from "@/context/CartContext";
-import Index from "./pages/Index";
-import Products from "./pages/Products";
-import ProductDetail from "./pages/ProductDetail";
-import Privacy from "./pages/Privacy";
-import NotFound from "./pages/NotFound";
+import { Toaster } from "@/components/ui/toaster";
+import "@/App.css";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+function App() {
+  return (
+    <ThemeProvider defaultTheme="light">
       <CartProvider>
-        <Toaster />
-        <Sonner />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/products" element={<Products />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/privacy" element={<Privacy />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/product-report" element={<ProductReport />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <Toaster />
       </CartProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+    </ThemeProvider>
+  );
+}
 
 export default App;

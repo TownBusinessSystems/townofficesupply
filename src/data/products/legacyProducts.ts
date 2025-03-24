@@ -1,4 +1,3 @@
-
 import { Product } from "@/context/CartContext";
 
 // Legacy HP Toner Products
@@ -8,7 +7,7 @@ export const legacyProducts: Product[] = [
     name: "Compatible Black Toner Cartridge for HP 35A (CB435A)",
     price: 35.99,
     originalPrice: 75.89,
-    image: "public/lovable-uploads/415d87fd-9d48-4212-b778-bad184c560c3.png",
+    image: "/lovable-uploads/415d87fd-9d48-4212-b778-bad184c560c3.png",
     brand: "HP",
     category: "toner",
     compatibility: ["LaserJet P1002", "LaserJet P1005", "LaserJet P1006", "LaserJet P1007", "LaserJet P1008"],

@@ -1,4 +1,3 @@
-
 import { Product } from "@/context/CartContext";
 
 // Toner Cartridges Data
@@ -8,7 +7,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 94X Black Toner Cartridge (CF294X)",
     price: 49.99,
     originalPrice: 99.99,
-    image: "public/lovable-uploads/ed814e27-c7ee-480f-86c8-3d5ebc975d05.png",
+    image: "/lovable-uploads/ed814e27-c7ee-480f-86c8-3d5ebc975d05.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M118dw", "MFP M148dw", "MFP M148fdw"],
@@ -25,7 +24,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 17A Black Toner Cartridge (CF217A)",
     price: 25.99,
     originalPrice: 79.99,
-    image: "public/lovable-uploads/1037362a-4184-470f-8018-7a76ce79fde0.png",
+    image: "/lovable-uploads/1037362a-4184-470f-8018-7a76ce79fde0.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M102w", "M130fw", "M130nw"],
@@ -42,7 +41,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 19A Black Drum Unit (CF219A)",
     price: 35.99,
     originalPrice: 90.09,
-    image: "public/lovable-uploads/0fb7451a-f803-4633-ad4f-ab11a0d0fb7a.png",
+    image: "/lovable-uploads/0fb7451a-f803-4633-ad4f-ab11a0d0fb7a.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M102w", "M130fw", "M130nw"],
@@ -59,7 +58,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 26A Black Toner Cartridge (CF226A)",
     price: 49.99,
     originalPrice: 119.99,
-    image: "public/lovable-uploads/3c8c990d-27f0-43fd-ac74-a68f9484428c.png",
+    image: "/lovable-uploads/3c8c990d-27f0-43fd-ac74-a68f9484428c.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M402dn", "M402dw", "M402n", "MFP M426fdn", "MFP M426fdw"],
@@ -76,7 +75,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 26X Black Toner Cartridge (CF226X)",
     price: 54.99,
     originalPrice: 179.99,
-    image: "public/lovable-uploads/613f93a8-e6ed-4404-8c9c-7e786bdfd16b.png",
+    image: "/lovable-uploads/613f93a8-e6ed-4404-8c9c-7e786bdfd16b.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M402dn", "M402dw", "M402n", "MFP M426fdn", "MFP M426fdw"],
@@ -93,7 +92,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 30A Black Toner Cartridge (CF230A)",
     price: 34.99,
     originalPrice: 79.99,
-    image: "public/lovable-uploads/363a864a-f4d2-42b1-b325-94d5d88f3ef1.png",
+    image: "/lovable-uploads/363a864a-f4d2-42b1-b325-94d5d88f3ef1.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M203dw", "MFP M227fdw", "MFP M227sdn"],
@@ -110,7 +109,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 30X Black Toner Cartridge (CF230X)",
     price: 44.99,
     originalPrice: 119.99,
-    image: "public/lovable-uploads/fa046605-aa24-4157-9d7d-fe143a030212.png",
+    image: "/lovable-uploads/fa046605-aa24-4157-9d7d-fe143a030212.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M203dw", "MFP M227fdw", "MFP M227sdn"],
@@ -122,13 +121,12 @@ export const tonerProducts: Product[] = [
     oemNumber: "CF230X",
     description: "This compatible CF230X (HP 30X) black laser toner cartridge is professionally manufactured. It is not a remanufactured cartridge and was not made by HP. This newly built cartridge may contain new and used parts. It serves as an excellent alternative to costly OEM HP CF230X (30X) black laser toner cartridges. The compatible CF230X black laser toner is guaranteed to deliver excellent, dependable results, page after page. Using this compatible HP CF230X black laser toner cartridge does not void your printer's warranty. It comes with a lifetime guarantee."
   },
-  // Add the three missing products
   {
     id: "CF287X",
     name: "Compatible HP 87X Black Toner Cartridge (CF287X)",
     price: 99.99,
     originalPrice: 229.99,
-    image: "public/lovable-uploads/1e848f63-b221-4f36-bbed-52b71f0a79c9.png", // Updated image path
+    image: "/lovable-uploads/1e848f63-b221-4f36-bbed-52b71f0a79c9.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Enterprise M506n", "MFP M527dn", "MFP M527f"],
@@ -145,7 +143,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 94A Black Toner Cartridge (CF294A)",
     price: 45.99,
     originalPrice: 69.99,
-    image: "public/lovable-uploads/d1af8db7-aea8-4194-a5b3-c9f39382e6b0.png", // Updated image path
+    image: "/lovable-uploads/d1af8db7-aea8-4194-a5b3-c9f39382e6b0.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M118dw", "MFP M148dw", "MFP M148fdw"],
@@ -162,7 +160,7 @@ export const tonerProducts: Product[] = [
     name: "Compatible HP 32A Black Drum Unit (CF232A)",
     price: 49.99,
     originalPrice: 129.99,
-    image: "public/placeholder.svg",
+    image: "/lovable-uploads/3747cc62-0bae-4ce8-ba1c-331a3d214695.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M203dw", "MFP M227fdw", "MFP M227sdn"],

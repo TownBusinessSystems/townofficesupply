@@ -26,11 +26,16 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
     updateQuantity(product.id, quantity + 1);
   };
 
+  // Fix image path by removing the "public" prefix if it exists
+  const imagePath = product.image.startsWith("public/") 
+    ? product.image.substring(7) 
+    : product.image;
+
   return (
     <div className="flex gap-4 py-4 border-b border-gray-200 dark:border-gray-800 last:border-b-0 animate-fade-in">
       <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-md overflow-hidden">
         <img
-          src={product.image || "https://placehold.co/200x200/e2e8f0/a1a1aa?text=Product"}
+          src={imagePath || "https://placehold.co/200x200/e2e8f0/a1a1aa?text=Product"}
           alt={product.name}
           className="w-full h-full object-contain p-1"
         />

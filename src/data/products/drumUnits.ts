@@ -8,7 +8,7 @@ export const drumUnits: Product[] = [
     name: "Compatible HP 32A Black Drum Unit (CF232A)",
     price: 49.99,
     originalPrice: 129.99,
-    image: "public/lovable-uploads/3747cc62-0bae-4ce8-ba1c-331a3d214695.png",
+    image: "/lovable-uploads/3747cc62-0bae-4ce8-ba1c-331a3d214695.png",
     brand: "HP",
     category: "toner",
     compatibility: ["HP LaserJet Pro M203dw", "MFP M227fdw", "MFP M227sdn"],

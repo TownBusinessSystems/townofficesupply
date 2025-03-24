@@ -1,4 +1,3 @@
-
 import { Product } from "@/context/CartContext";
 
 // Additional Brother Drum Units Data
@@ -8,7 +7,7 @@ export const brotherDrumUnitsExtended: Product[] = [
     name: "Compatible Brother DR730 Drum Unit",
     price: 49.99,
     originalPrice: 99.99,
-    image: "public/lovable-uploads/51f81c7d-c4a3-4416-97f2-669d3893569b.png",
+    image: "/lovable-uploads/51f81c7d-c4a3-4416-97f2-669d3893569b.png",
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-L2550DW", "HL-L2350DW", "HL-L2395DW", "MFC-L2710DW", "MFC-L2750DW"],

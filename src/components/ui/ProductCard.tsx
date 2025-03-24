@@ -20,6 +20,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
     : 0;
 
+  // Fix image path by removing the "public" prefix if it exists
+  const imagePath = product.image.startsWith("public/") 
+    ? product.image.substring(7) 
+    : product.image;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -29,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
     >
       <div className="overflow-hidden relative">
         <img
-          src={product.image || "https://placehold.co/600x400/e2e8f0/a1a1aa?text=Office+Supply"}
+          src={imagePath || "https://placehold.co/600x400/e2e8f0/a1a1aa?text=Office+Supply"}
           alt={product.name}
           className="w-full h-48 object-contain object-center p-4 bg-white dark:bg-gray-900 transition-transform duration-500 group-hover:scale-110"
           loading="lazy"

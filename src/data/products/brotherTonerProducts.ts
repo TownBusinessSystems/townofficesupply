@@ -8,7 +8,7 @@ export const brotherTonerProducts: Product[] = [
     name: "Compatible Brother TN450 Black Toner Cartridge",
     price: 35.99,
     originalPrice: 65.19,
-    image: "public/lovable-uploads/af68948f-5178-4f9d-b353-0f6fb9fdacb1.png",
+    image: "/lovable-uploads/af68948f-5178-4f9d-b353-0f6fb9fdacb1.png",
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-7065DN", "HL-2220", "HL-2230", "HL-2240", "HL-2270DW", "MFC-7360N"],

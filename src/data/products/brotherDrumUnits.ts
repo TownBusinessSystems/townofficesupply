@@ -1,3 +1,4 @@
+
 import { Product } from "@/context/CartContext";
 
 // Brother Drum Units Data
@@ -7,7 +8,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR400 Drum Unit",
     price: 79.99,
     originalPrice: 186.99,
-    image: "/lovable-uploads/0f704c12-6a06-455b-9548-814139f2bb8a.png",
+    image: "/placeholder.svg", // Using placeholder since no specific image was provided
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-1200", "DCP-1400", "HL-1230", "HL-1240", "HL-1250", "HL-1270N", "MFC-8300", "MFC-8500", "MFC-8600", "MFC-8700"],
@@ -24,7 +25,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR420 Drum Unit",
     price: 49.99,
     originalPrice: 99.99,
-    image: "/lovable-uploads/0c0a0ca7-aced-4f54-a2ed-4f51d16a575a.png",
+    image: "/lovable-uploads/7e4c9cc0-82fb-4f0e-ba25-7e7e12f0aad9.png",
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-7065DN", "HL-2230", "HL-2240", "HL-2270DW", "MFC-7360N", "MFC-7860DW"],
@@ -41,7 +42,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR510 Drum Unit",
     price: 59.99,
     originalPrice: 129.99,
-    image: "/lovable-uploads/80454a9a-9fc4-4430-8dbd-11ecde9265ec.png",
+    image: "/lovable-uploads/da1a69d1-10f5-4218-80d1-d819c831b37b.png",
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-8040", "DCP-8045D", "HL-5140", "HL-5150D", "MFC-8220", "MFC-8440"],
@@ -58,7 +59,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR520 Drum Unit",
     price: 59.99,
     originalPrice: 129.99,
-    image: "/lovable-uploads/6df46a9e-1b17-4036-aa77-ff9242b319d9.png",
+    image: "/lovable-uploads/4f2fae83-26dc-4b6f-a136-9587af12c270.png",
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-8060", "DCP-8065DN", "HL-5240", "HL-5250DN", "MFC-8460N", "MFC-8860DN"],
@@ -75,7 +76,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR620 Drum Unit",
     price: 59.99,
     originalPrice: 129.99,
-    image: "/lovable-uploads/907c8b6e-c84b-43bb-aa03-9557b6f7a41c.png",
+    image: "/lovable-uploads/6df46a9e-1b17-4036-aa77-ff9242b319d9.png",
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-8080DN", "DCP-8085DN", "HL-5340D", "HL-5370DW", "MFC-8480DN", "MFC-8890DW"],
@@ -92,7 +93,7 @@ export const brotherDrumUnits: Product[] = [
     name: "Compatible Brother DR630 Drum Unit",
     price: 49.99,
     originalPrice: 99.99,
-    image: "/lovable-uploads/84bb708e-f196-468f-9b73-49235065d4ce.png",
+    image: "/lovable-uploads/0a19d3dc-ba65-4b19-ba59-8bfcff1cdb90.png",
     brand: "Brother",
     category: "toner",
     compatibility: ["Brother DCP-L2520DW", "HL-L2300D", "HL-L2340DW", "MFC-L2700DW", "MFC-L2740DW"],

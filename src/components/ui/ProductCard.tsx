@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
     : 0;
 
   // Fix image path by removing the "public" prefix if it exists
-  const imagePath = product.image.startsWith("public/") 
+  const imagePath = product.image?.startsWith("public/") 
     ? product.image.substring(7) 
     : product.image;
 

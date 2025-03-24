@@ -26,8 +26,8 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
     updateQuantity(product.id, quantity + 1);
   };
 
-  // Fix image path by removing the "public" prefix if it exists
-  const imagePath = product.image.startsWith("public/") 
+  // Fix image path - ensure it doesn't have public/ prefix
+  const imagePath = product.image?.startsWith("public/") 
     ? product.image.substring(7) 
     : product.image;
 

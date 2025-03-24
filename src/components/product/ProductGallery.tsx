@@ -13,6 +13,14 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Fix image paths by removing the "public" prefix if it exists
+  const fixImagePath = (path: string | undefined): string => {
+    if (!path) return "https://placehold.co/800x800/e2e8f0/a1a1aa?text=Product+Image";
+    return path.startsWith("public/") ? path.substring(7) : path;
+  };
+
+  const processedImages = productImages.map(img => fixImagePath(img));
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -22,14 +30,14 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
     >
       <div className="glass-card p-6 rounded-xl overflow-hidden">
         <img
-          src={productImages[currentImageIndex] || productImages[0]}
+          src={processedImages[currentImageIndex] || processedImages[0]}
           alt={productName}
           className="w-full h-auto object-contain aspect-square"
         />
       </div>
       
       <div className="grid grid-cols-3 gap-4">
-        {productImages.map((image, index) => (
+        {processedImages.map((image, index) => (
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
@@ -40,7 +48,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
             } bg-white dark:bg-gray-800 transition-all duration-200`}
           >
             <img
-              src={image || productImages[0]}
+              src={image || processedImages[0]}
               alt={`Thumbnail ${index + 1}`}
               className="w-full h-auto aspect-square object-contain"
             />

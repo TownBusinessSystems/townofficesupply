@@ -85,7 +85,7 @@ const FeaturesSection: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold mb-4 text-center"
           >
             Why Choose Us
           </motion.h2>

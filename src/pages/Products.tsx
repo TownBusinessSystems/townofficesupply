@@ -35,8 +35,8 @@ const Products = () => {
       <Navbar />
       <CartDrawer />
       
-      <main className="flex-grow pt-16">
-        <section className="py-12 bg-gray-50 dark:bg-gray-900/50">
+      <main className="flex-grow">
+        <section className="py-6 bg-gray-50 dark:bg-gray-900/50">
           <div className="container px-4 mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
               <div>

@@ -33,6 +33,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
     addToCart(product, quantity);
   };
 
+  // Add a simpler version that adds just one item
+  const handleQuickAddToCart = () => {
+    addToCart(product, 1);
+  };
+
   // Determine if product is a toner cartridge or drum unit
   const productType = product.name.toLowerCase().includes('drum') 
     ? "Drum Unit" 
@@ -82,18 +87,28 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
         </div>
         
         <div className="mb-4">
-          <div className="flex items-center">
-            <span className="text-2xl font-semibold">${product.price.toFixed(2)}</span>
-            {product.originalPrice && (
-              <>
-                <span className="text-base line-through ml-3 text-muted-foreground">
-                  ${product.originalPrice.toFixed(2)}
-                </span>
-                <span className="text-sm ml-2 text-red-500 font-medium">
-                  Save ${(product.originalPrice - product.price).toFixed(2)}
-                </span>
-              </>
-            )}
+          <div className="flex items-center gap-4">
+            <div>
+              <span className="text-2xl font-semibold">${product.price.toFixed(2)}</span>
+              {product.originalPrice && (
+                <>
+                  <span className="text-base line-through ml-3 text-muted-foreground">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                  <span className="text-sm ml-2 text-red-500 font-medium">
+                    Save ${(product.originalPrice - product.price).toFixed(2)}
+                  </span>
+                </>
+              )}
+            </div>
+            <Button 
+              size="sm"
+              className="bg-accent hover:bg-accent/90 text-white"
+              onClick={handleQuickAddToCart}
+            >
+              <ShoppingCart size={16} className="mr-1" />
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>

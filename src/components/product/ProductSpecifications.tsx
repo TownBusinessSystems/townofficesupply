@@ -56,7 +56,7 @@ const ProductSpecifications: React.FC<ProductSpecificationsProps> = ({ product }
               </div>
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground">Shelf Life</h3>
-                <p>{product.shelfLife || "24-36 Months"}</p>
+                <p>12 Months</p>
               </div>
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground">Packaging</h3>

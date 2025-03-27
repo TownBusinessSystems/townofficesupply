@@ -27,7 +27,7 @@ const Index = () => {
       <Navbar />
       <CartDrawer />
       
-      <main className="flex-grow">
+      <main className="flex-grow bg-standard">
         <Hero externalIndex={currentIndex} />
         <FeaturedProducts products={allFeaturedProducts} />
         <FeaturesSection />

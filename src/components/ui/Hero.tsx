@@ -55,10 +55,9 @@ const Hero: React.FC<HeroProps> = ({ externalIndex }) => {
   const displayIndex = externalIndex !== undefined ? externalIndex : currentIndex;
 
   return (
-    <section className="relative pt-0 pb-4 overflow-hidden">
+    <section className="relative pt-0 pb-4 overflow-hidden bg-hero">
       {/* Background element */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"></div>
         <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-br from-accent/10 to-transparent"></div>
       </div>
 

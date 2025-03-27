@@ -16,15 +16,15 @@ const features: FeatureItem[] = [
     icon: ShieldCheck,
     title: "Quality Guarantee",
     description: "All our products come with a 100% satisfaction guarantee.",
-    gradient: "from-blue-400 to-cyan-500", // Swapped with Fast Shipping
-    iconClass: "bg-cyan-400/30" // Swapped with Fast Shipping
+    gradient: "from-blue-400 to-cyan-500",
+    iconClass: "bg-cyan-400/30"
   },
   {
     icon: Truck,
     title: "Fast Shipping",
-    description: "Enjoy free 1-3 day shipping on all orders.", // Updated shipping text
-    gradient: "from-blue-500 to-indigo-600", // Swapped with Quality Guarantee
-    iconClass: "bg-blue-400/30" // Swapped with Quality Guarantee
+    description: "Enjoy free 1-3 day shipping on all orders.",
+    gradient: "from-blue-500 to-indigo-600",
+    iconClass: "bg-blue-400/30"
   },
   {
     icon: Users,
@@ -78,7 +78,7 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
 
 const FeaturesSection: React.FC = () => {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
+    <section className="py-16 bg-alt">
       <div className="container px-4 mx-auto">
         <div className="text-center mb-12">
           <motion.h2 

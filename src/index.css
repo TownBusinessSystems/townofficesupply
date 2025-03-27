@@ -99,7 +99,7 @@
   }
   
   body {
-    @apply bg-background text-foreground font-sans text-left;
+    @apply bg-white dark:bg-gray-950 text-foreground font-sans text-left min-h-screen w-full m-0 p-0;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -168,4 +168,17 @@
 .page-transition-exit-active {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
+}
+
+/* Standard section background colors */
+.bg-standard {
+  @apply bg-white dark:bg-gray-950;
+}
+
+.bg-alt {
+  @apply bg-gray-50 dark:bg-gray-900/50;
+}
+
+.bg-hero {
+  @apply bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950;
 }

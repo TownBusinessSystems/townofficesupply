@@ -5,7 +5,7 @@ import CategoryCard from "@/components/ui/CategoryCard";
 
 const CategoriesSection: React.FC = () => {
   return (
-    <section className="py-10 bg-gray-50 dark:bg-gray-900/50">
+    <section className="py-10 bg-alt">
       <div className="container px-4 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <CategoryCard

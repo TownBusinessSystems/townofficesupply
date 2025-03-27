@@ -99,17 +99,17 @@
   }
   
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans text-left;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-medium tracking-tight;
+    @apply font-display font-medium tracking-tight text-left;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/10 dark:border-black/10 shadow-soft;
+    @apply bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/10 dark:border-black/10 shadow-soft text-left;
   }
   
   .glass-effect {

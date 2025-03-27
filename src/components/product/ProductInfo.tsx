@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ShoppingCart, Minus, Plus, ShieldCheck, Truck, Undo } from "lucide-react";
+import { ShoppingCart, Minus, Plus, ShieldCheck, Truck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Product, useCart } from "@/context/CartContext";
@@ -39,6 +39,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
     : product.category === "ink" 
       ? "Ink Cartridge" 
       : "Toner Cartridge";
+
+  // Process description to remove the last sentence about lifetime guarantee
+  const processedDescription = product.description?.replace(/\s+It comes with a lifetime guarantee\.$/, '');
 
   return (
     <motion.div
@@ -98,7 +101,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
       <div className="border-t border-b border-gray-200 dark:border-gray-800 py-6">
         <h3 className="font-medium mb-3">Description</h3>
         <p className="text-muted-foreground">
-          {product.description || `Original ${product.brand} ${product.category === "ink" ? "ink" : "toner"} cartridge designed for optimal print quality and reliability. Compatible with various ${product.brand} printer models including ${product.compatibility?.join(", ")}.`}
+          {processedDescription || `Original ${product.brand} ${product.category === "ink" ? "ink" : "toner"} cartridge designed for optimal print quality and reliability. Compatible with various ${product.brand} printer models including ${product.compatibility?.join(", ")}.`}
         </p>
       </div>
       
@@ -168,9 +171,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
         <div className="flex items-start">
           <ShieldCheck size={20} className="text-accent mr-4 mt-0.5" />
           <div>
-            <h4 className="font-medium text-sm">Lifetime Guarantee</h4>
+            <h4 className="font-medium text-sm">100% Satisfaction Guarantee</h4>
             <p className="text-sm text-muted-foreground">
-              All our compatible cartridges come with a lifetime guarantee for peace of mind.
+              If anything goes wrong with your purchase, we're here to make it right.
             </p>
           </div>
         </div>
@@ -181,16 +184,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
             <h4 className="font-medium text-sm">Fast Shipping</h4>
             <p className="text-sm text-muted-foreground">
               Enjoy free 1-3 day shipping on all orders.
-            </p>
-          </div>
-        </div>
-        
-        <div className="flex items-start">
-          <Undo size={20} className="text-accent mr-4 mt-0.5" />
-          <div>
-            <h4 className="font-medium text-sm">Easy Returns</h4>
-            <p className="text-sm text-muted-foreground">
-              30-day hassle-free return policy.
             </p>
           </div>
         </div>

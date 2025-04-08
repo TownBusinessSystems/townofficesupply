@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -10,15 +9,15 @@ const Logo: React.FC = () => {
     >
       <img 
         src="/lovable-uploads/719dc146-0c76-4965-b83a-67b6eb021ba2.png" 
-        alt="Town Office Supply Logo" 
+        alt="TonerEmpire Logo" 
         className="h-16 w-auto" // Reduced from h-24 to h-16
       />
       <div className="flex flex-col items-start">
         <span className="text-accent text-lg font-display font-semibold leading-tight">
-          Town
+          Toner
         </span>
         <span className="text-lg font-display font-semibold leading-tight">
-          Office Supply
+          Empire
         </span>
         <span className="text-xs text-gray-600 italic font-medium leading-tight">
           Ink & Toner Store

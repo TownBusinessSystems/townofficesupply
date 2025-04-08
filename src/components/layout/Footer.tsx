@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -17,7 +16,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Town Office Supply</h3>
+            <h3 className="text-lg font-semibold">TonerEmpire</h3>
             <p className="text-sm text-muted-foreground">
               Specializing in ink and toner refills for businesses and individuals 
               across the United States.
@@ -99,7 +98,7 @@ const Footer = () => {
         <div className="divider"></div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Town Office Supply. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} TonerEmpire. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="hover:text-accent transition-colors duration-300">
               Privacy Policy
